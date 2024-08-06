@@ -1,12 +1,14 @@
+import "./video.css";
+
 export default function Video() {
   return (
-    <div className="w-screen bg-hero-section bg-no-repeat h-screen md:h-auto bg-center bg-cover border-2 border-red-900">
+    <div className="parallaxEffect w-screen bg-hero-section bg-no-repeat h-screen md:h-auto bg-center bg-cover">
       <video
         aria-label="Video"
         height="600"
         width="768"
         loop
-        autoPlay
+        // autoPlay
         className="w-screen inset-0 object-cover h-screen xl:h-auto"
         playsInline
         muted
