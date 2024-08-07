@@ -5,7 +5,7 @@ import "./about.css";
 
 export default function About() {
   return (
-    <div className="w-screen h-full py-28">
+    <div id="about" className="w-screen h-full py-28">
       <Parallax translateY={[50, -50]}>
         <div className="flex flex-col sm:flex-row justify-center py-20 items-center w-full h-full">
           <div className="hidden md:flex w-1/2 grow justify-end">

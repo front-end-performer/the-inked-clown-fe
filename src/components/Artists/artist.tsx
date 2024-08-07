@@ -10,7 +10,6 @@ import Link from "next/link";
 export default function Artist(props: any) {
   return (
     <Card
-      isBlurred
       className="border-none bg-transparent max-w-full"
       shadow="sm"
     >

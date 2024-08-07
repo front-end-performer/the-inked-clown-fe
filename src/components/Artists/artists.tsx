@@ -21,8 +21,8 @@ export default function Artists() {
   ];
 
   return (
-    <div className="flex justify-center max-w-full w-full py-28 px-2 bg-[url('/artists/artist_bg.jpg')] bg-cover bg-no-repeat z-0">
-      <div className="flex flex-col gap-y-20 max-w-[1440px] w-full">
+    <div id="artists" className="flex justify-center max-w-full w-full py-28 px-2 bg-[url('/artists/artist_bg.jpg')] bg-cover bg-no-repeat z-0">
+      <div className="flex flex-col gap-y-20 max-w-7xl w-full">
         {artists.map((artist) => {
           return (
             <Artist

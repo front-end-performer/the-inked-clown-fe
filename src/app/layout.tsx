@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NextUIProvider } from "@nextui-org/react";
-import Header from "@/components/header";
 import { Providers } from './providers';
+import Header from "@/components/header";
 import "./globals.css";
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
-
-// library.add(faTwitter, faFontAwesome);
 
 
 

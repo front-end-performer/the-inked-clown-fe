@@ -7,10 +7,11 @@ import {
   NavbarItem,
   NavbarMenu,
   NavbarMenuItem,
-  Link,
 } from "@nextui-org/react";
-import { useState } from "react";
-import { Image } from "@nextui-org/image";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import Logo from "../../public/logos/inkedclown-logo-header.png";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,7 +37,6 @@ export default function Header() {
 
   return (
     <Navbar
-      // shouldHideOnScroll
       onMenuOpenChange={setIsMenuOpen}
       className={`${
         isMenuOpen
@@ -45,11 +45,11 @@ export default function Header() {
       } 
               ${
                 isScrolled
-                  ? "bg-slate-900/25 transition-spacing duration-500 ease-in-out py-6"
+                  ? "bg-slate-900/25 transition-spacing duration-500 ease-in-out py-2"
                   : ""
               }
         fixed backdrop-blur-none`}
-      height={isScrolled ? "88px" : ""}
+      height="88px"
       onScrollPositionChange={onScrollHandler}
       classNames={{
         item: [
@@ -70,37 +70,36 @@ export default function Header() {
     >
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem isActive>
-          <Link
-            color="foreground"
-            href="#"
-            aria-current="page"
-            className="text-white"
-          >
+          <Link color="foreground" href="#" className="text-white">
             Home
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#" className="text-white">
+          <Link color="foreground" href="#about" className="text-white">
             About us
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#" className="text-white">
+          <Link color="foreground" href="#artists" className="text-white">
             Artists
           </Link>
         </NavbarItem>
       </NavbarContent>
 
       <NavbarBrand className="grow-0">
-        <Image
-          className={`${
-            isScrolled
-              ? "transition-spacing duration-300 ease-in-out max-w-[88px]"
-              : "transition-spacing duration-300 ease-in-out max-w-[64px]"
-          }`}
-          alt="The Inked Clown"
-          src="/logos/inkedclown-logo-header.png"
-        />
+        <Link href="/">
+          <Image
+            // className={`${
+            //   isScrolled
+            //     ? "transition-spacing duration-300 ease-in-out max-w-[88px]"
+            //     : "transition-spacing duration-300 ease-in-out max-w-[64px]"
+            // }`}
+            className="max-w-[64px]"
+            priority
+            src={Logo}
+            alt="The Inked Clown"
+          />
+        </Link>
       </NavbarBrand>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
@@ -139,7 +138,6 @@ export default function Header() {
               }
               className="w-full"
               href="#"
-              size="lg"
             >
               {item}
             </Link>
