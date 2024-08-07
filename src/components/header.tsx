@@ -8,7 +8,6 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   Link,
-  Button,
 } from "@nextui-org/react";
 import { useState } from "react";
 import { Image } from "@nextui-org/image";
@@ -18,7 +17,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const onScrollHandler = (position: number) => {
-    if (position <= 4) {
+    if (position <= 2) {
       setIsScrolled(false);
       return;
     }
@@ -39,10 +38,18 @@ export default function Header() {
     <Navbar
       // shouldHideOnScroll
       onMenuOpenChange={setIsMenuOpen}
-      className={`${isMenuOpen ? "bg-[#FF0F3D]" : "bg-transparent transition-spacing duration-300 ease-in-out py-0"} 
-              ${isScrolled ? "bg-slate-900/25 transition-spacing duration-300 ease-in-out py-4" : ""}
+      className={`${
+        isMenuOpen
+          ? "bg-[#FF0F3D]"
+          : "bg-transparent transition-spacing duration-500 ease-in-out py-0"
+      } 
+              ${
+                isScrolled
+                  ? "bg-slate-900/25 transition-spacing duration-500 ease-in-out py-6"
+                  : ""
+              }
         fixed backdrop-blur-none`}
-      height={isScrolled ? '120px' : 'auto'}
+      height={isScrolled ? "88px" : ""}
       onScrollPositionChange={onScrollHandler}
       classNames={{
         item: [
@@ -86,7 +93,11 @@ export default function Header() {
 
       <NavbarBrand className="grow-0">
         <Image
-          className={isScrolled ? 'max-w-[120px] transition-spacing duration-300 ease-in-out' : 'max-w-[64px]'}
+          className={`${
+            isScrolled
+              ? "transition-spacing duration-300 ease-in-out max-w-[88px]"
+              : "transition-spacing duration-300 ease-in-out max-w-[64px]"
+          }`}
           alt="The Inked Clown"
           src="/logos/inkedclown-logo-header.png"
         />
