@@ -8,15 +8,43 @@ import {
   NavbarMenu,
   NavbarMenuItem,
 } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../public/logos/inkedclown-logo-header.png";
+import { useHash } from "@/useHash";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { hash } = useHash();
+  // const [activeSection, setActiveSection] = useState("");
+  // const sections = useRef([]);
 
+  // const observerOptions = {
+  //   root: null,
+  //   rootMargin: "0px",
+  //   threshold: 0.37,
+  // };
+  
+  // useEffect(() => {
+  //   const callback = function (entries: any) {
+  //     entries.forEach((entry: any) => {
+  //       if (entry.isIntersecting) {
+  //         entry.target.classList.add("is-visible");
+  //       } else {
+  //         entry.target.classList.remove("is-visible");
+  //       }
+  //     });
+  //   };
+
+  //   const observer = new IntersectionObserver(callback, observerOptions);
+  //   const targets = document.querySelectorAll(".show-onscroll");
+  //   targets.forEach((target) => {
+  //     observer.observe(target);
+  //   });
+  // }, []);
+ 
   const onScrollHandler = (position: number) => {
     if (position <= 2) {
       setIsScrolled(false);
@@ -58,42 +86,43 @@ export default function Header() {
           "items-center",
           "data-[active=true]:after:content-['']",
           "data-[active=true]:after:absolute",
-          "data-[active=true]:after:bottom-[-2px]",
+          "data-[active=true]:after:content-['']",
+          "data-[active=true]:after:bottom-[-6px]",
           "data-[active=true]:after:left-0",
           "data-[active=true]:after:right-0",
-          "data-[active=true]:after:h-[2px]",
-          "data-[active=true]:after:hover:h-[4px]",
+          "data-[active=true]:after:h-[4px]",
           "data-[active=true]:after:rounded-[2px]",
           `data-[active=true]:after:bg-[#FF0F3D]`,
         ],
       }}
     >
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem isActive>
-          <Link color="foreground" href="#" className="text-white">
+        <NavbarItem isActive={hash?.length === 0}>
+          <Link color="foreground" href="/" className="text-white hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]">
             Home
           </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#about" className="text-white">
+        <NavbarItem
+          isActive={hash?.startsWith("#about")}
+          className="text-white"
+        >
+          <Link color="foreground" href="/#about" className="text-white hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]">
             About us
           </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#artists" className="text-white">
+        <NavbarItem
+          isActive={hash?.startsWith("#artists")}
+          className="text-white"
+        >
+          <Link color="foreground" href="/#artists" className="text-white hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]">
             Artists
           </Link>
         </NavbarItem>
       </NavbarContent>
 
       <NavbarBrand className="grow-0">
-        <Link href="/">
+        <Link color="foreground" href="/">
           <Image
-            // className={`${
-            //   isScrolled
-            //     ? "transition-spacing duration-300 ease-in-out max-w-[88px]"
-            //     : "transition-spacing duration-300 ease-in-out max-w-[64px]"
-            // }`}
             className="max-w-[64px]"
             priority
             src={Logo}

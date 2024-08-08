@@ -1,4 +1,4 @@
-import Artist from "@/components/Artists/artist";
+import Artist from "./artist";
 
 export default function Artists() {
   const artists = [
@@ -21,7 +21,7 @@ export default function Artists() {
   ];
 
   return (
-    <div id="artists" className="flex justify-center max-w-full w-full py-28 px-2 bg-[url('/artists/artist_bg.jpg')] bg-cover bg-no-repeat z-0">
+    <section id="artists" className="show-onscroll flex justify-center max-w-full w-full py-28 px-2 bg-[url('/artists/artist_bg.jpg')] bg-cover bg-no-repeat z-0">
       <div className="flex flex-col gap-y-20 max-w-7xl w-full">
         {artists.map((artist) => {
           return (
@@ -34,6 +34,6 @@ export default function Artists() {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }
