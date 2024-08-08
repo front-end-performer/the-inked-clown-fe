@@ -16,6 +16,10 @@
 # production
 /build
 
+# development
+/src/de.json
+/src/en.json
+
 # misc
 .DS_Store
 *.pem

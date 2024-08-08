@@ -2,8 +2,11 @@
 
 import { Parallax } from "react-scroll-parallax";
 import "./about.css";
+import { useTranslations } from "next-intl";
 
 export default function About() {
+  const t = useTranslations('HomePage');
+
   return (
     <section id="about" className="show-onscroll w-screen h-full py-28">
       <Parallax translateY={[50, -50]}>
@@ -25,8 +28,7 @@ export default function About() {
                 About us
               </h3>
 
-              <p className="text-5xl font-black">We are</p>
-              <p className="text-5xl font-black">Who we are ...</p>
+              <p className="text-5xl font-black">{t("sectionAbout.title")}</p>
             </div>
 
             <p className="text-normal font-light w-full md:w-3/4 pl-4 md:pl-24">
