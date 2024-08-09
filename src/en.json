@@ -2,8 +2,9 @@
   "HomePage": {
     "title": "Welcome",
     "sectionAbout": {
-      "title": "We are Who we are ...",
-      "subTitle": "About us",
+      "title": "About us",
+      "subTitle1": "We are",
+      "subTitle2": "Who we are ...",
       "description": "If you are looking for an individual tattoo in a sterile environment, then you have come to the right place!"
     },
     "artists": [
@@ -19,7 +20,7 @@
         "buttonText": "See more"
       },
       {
-        "id": 0,
+        "id": 1,
         "name": "Denis Titarev",
         "slug": "/artist/denis_titarev",
         "title": "Artist",
