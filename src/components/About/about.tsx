@@ -5,7 +5,7 @@ import "./about.css";
 import { useTranslations } from "next-intl";
 
 export default function About() {
-  const t = useTranslations('HomePage');
+  const t = useTranslations("HomePage");
 
   return (
     <section id="about" className="show-onscroll w-screen h-full py-28">
@@ -25,15 +25,15 @@ export default function About() {
           <div className="flex flex-col w-full md:w-1/2 grow">
             <div className="relative -top-20 flex flex-col w-full justify-start px-20 py-16 border-l-8 border-t-8 border-b-8 border-slate-900">
               <h3 className="text-xl underline underline-offset-4 text-[#FF0F3D] pb-12">
-                About us
+              {t("sectionAbout.title")}
               </h3>
 
-              <p className="text-5xl font-black">{t("sectionAbout.title")}</p>
+              <p className="text-5xl font-black">{t("sectionAbout.subTitle1")}</p>
+              <p className="text-5xl font-black">{t("sectionAbout.subTitle2")}</p>
             </div>
 
             <p className="text-normal font-light w-full md:w-3/4 pl-4 md:pl-24">
-              Falls du auf der Suche nach einem Individuellen Tattoo im sterilen
-              Umfeld bist, dann bist du bei uns genau richtig!
+              {t("sectionAbout.description")}
             </p>
           </div>
         </div>

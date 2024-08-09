@@ -16,7 +16,6 @@
 # production
 /build
 
-# development
 /src/de.json
 /src/en.json
 

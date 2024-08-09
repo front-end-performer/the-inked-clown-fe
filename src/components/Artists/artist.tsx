@@ -8,11 +8,10 @@ import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 
 export default function Artist(props: any) {
+  const { artist } = props;
+
   return (
-    <Card
-      className="border-none bg-transparent max-w-full"
-      shadow="sm"
-    >
+    <Card className="border-none bg-transparent max-w-full" shadow="sm">
       <CardBody>
         <div className="grid grid-rows-[auto_auto_1fr] auto-rows-auto md:grid-rows-1 grid-flow-col gap-4">
           <Image
@@ -24,29 +23,29 @@ export default function Artist(props: any) {
               img: ["origin-center hover:scale-105"],
               wrapper: ["w-full m-auto col-span-3"],
             }}
-            src={props.image}
+            src={artist.image}
             alt="The Inked Clown Artist"
           />
 
           <div className="text-xl underline underline-offset-4 text-[#FF0F3D] text-center">
-            Artist
+            {artist.title}
           </div>
 
           <div className="flex flex-col gap-y-12 lg:gap-y-6">
             <div className="bg-white p-6">
-              <h2 className="text-lg font-semibold">{props.name}</h2>
+              <h2 className="text-lg font-semibold">{artist.name}</h2>
 
               <p className="text-normal text-black font-light">
-                {props.description}
+                {artist.description}
               </p>
             </div>
 
             <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-6 w-auto">
               <div className="flex gap-x-6 items-center">
                 <span className="hidden lg:block text-white font-normal">
-                  Check social media:
+                  {artist.socialMediaText}
                 </span>
-                <Link href="https://www.google.de">
+                <Link href={artist.socialUrl}>
                   <FontAwesomeIcon
                     icon={faTwitter}
                     size="xl"
@@ -55,7 +54,7 @@ export default function Artist(props: any) {
                   />
                 </Link>
 
-                <Link href="https://www.google.de">
+                <Link href={artist.socialUrl}>
                   <FontAwesomeIcon
                     icon={faFacebook}
                     size="xl"
@@ -65,7 +64,7 @@ export default function Artist(props: any) {
                 </Link>
               </div>
 
-              <Link href={props.slug}>
+              <Link href={artist.slug}>
                 <Button
                   title="See artist gallery"
                   radius="none"
@@ -79,7 +78,7 @@ export default function Artist(props: any) {
                     />
                   }
                 >
-                  See artist gallery
+                  {artist.buttonText}
                 </Button>
               </Link>
             </div>
