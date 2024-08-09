@@ -1,0 +1,10 @@
+.select :has([data-slot="trigger"]) > [data-slot="trigger"] {
+  border: none;
+  border-bottom: 4px solid;
+  border-bottom-color: #ff0f3d;
+}
+
+.select :has([data-slot="trigger"]),
+.select :has([data-slot="trigger"]) :has([data-slot="innerWrapper"]) span {
+  color: #fff;
+}

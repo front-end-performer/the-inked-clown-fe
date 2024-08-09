@@ -5,7 +5,7 @@ import { Providers } from "./providers";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 
-import Header from "@/components/header";
+import Header from "@/components/Header/header";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -29,15 +29,13 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={inter.className} suppressHydrationWarning={true}>
-        <NextUIProvider>
-          <Header />
+        <NextIntlClientProvider messages={messages}>
+          <NextUIProvider>
+            <Header />
 
-          <Providers>
-            <NextIntlClientProvider messages={messages}>
-              {children}
-            </NextIntlClientProvider>
-          </Providers>
-        </NextUIProvider>
+            <Providers>{children}</Providers>
+          </NextUIProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

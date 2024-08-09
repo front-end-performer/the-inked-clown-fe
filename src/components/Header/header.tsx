@@ -7,17 +7,29 @@ import {
   NavbarItem,
   NavbarMenu,
   NavbarMenuItem,
+  DropdownItem,
+  DropdownTrigger,
+  Dropdown,
+  DropdownMenu,
 } from "@nextui-org/react";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../../public/logos/inkedclown-logo-header.png";
+import Logo from "../../../public/logos/inkedclown-logo-header.png";
 import { useHash } from "@/useHash";
+import { useTranslations } from "next-intl";
+import Lang from "@/components/Header/LangSelect/lang";
+import { ChevronDown } from "@/components/Header/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDroplet } from "@fortawesome/free-solid-svg-icons";
 
 export default function Header() {
+  const t = useTranslations("Navigation");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { hash } = useHash();
+  const [isOpen, setIsOpen] = useState(false);
+
   // const [activeSection, setActiveSection] = useState("");
   // const sections = useRef([]);
 
@@ -26,7 +38,7 @@ export default function Header() {
   //   rootMargin: "0px",
   //   threshold: 0.37,
   // };
-  
+
   // useEffect(() => {
   //   const callback = function (entries: any) {
   //     entries.forEach((entry: any) => {
@@ -44,7 +56,7 @@ export default function Header() {
   //     observer.observe(target);
   //   });
   // }, []);
- 
+
   const onScrollHandler = (position: number) => {
     if (position <= 2) {
       setIsScrolled(false);
@@ -55,12 +67,12 @@ export default function Header() {
   };
 
   const menuItems = [
-    "Home",
-    "About us",
-    "Artists",
-    "Gallery",
-    "Testimonials",
-    "Contact us",
+    t("home"),
+    t("about"),
+    t("artists.navItem"),
+    t("gallery"),
+    t("testimonials"),
+    t("contact"),
   ];
 
   return (
@@ -91,33 +103,91 @@ export default function Header() {
           "data-[active=true]:after:left-0",
           "data-[active=true]:after:right-0",
           "data-[active=true]:after:h-[4px]",
-          "data-[active=true]:after:rounded-[2px]",
           `data-[active=true]:after:bg-[#FF0F3D]`,
         ],
       }}
     >
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden sm:flex gap-8 flex-1" justify="center">
         <NavbarItem isActive={hash?.length === 0}>
-          <Link color="foreground" href="/" className="text-white hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]">
-            Home
+          <Link
+            color="foreground"
+            href="/"
+            className="text-white hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
+          >
+            {t("home")}
           </Link>
         </NavbarItem>
         <NavbarItem
           isActive={hash?.startsWith("#about")}
           className="text-white"
         >
-          <Link color="foreground" href="/#about" className="text-white hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]">
-            About us
+          <Link
+            color="foreground"
+            href="/#about"
+            className="text-white hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
+          >
+            {t("about")}
           </Link>
         </NavbarItem>
-        <NavbarItem
-          isActive={hash?.startsWith("#artists")}
-          className="text-white"
-        >
-          <Link color="foreground" href="/#artists" className="text-white hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]">
-            Artists
-          </Link>
-        </NavbarItem>
+
+        <Dropdown placement="bottom-end" isOpen={isOpen} backdrop="blur" className="mt-8">
+          <DropdownTrigger>
+            <NavbarItem
+              isActive={hash?.startsWith("#artists")}
+              className="text-white"
+            >
+              <Link
+                className="text-white hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D] flex items-center gap-2"
+                href="/#artists"
+                onMouseEnter={() => {
+                  setIsOpen(true);
+                }}
+              >
+                {t("artists.navItem")}
+                <ChevronDown fill="currentColor" size={16} />
+              </Link>
+            </NavbarItem>
+          </DropdownTrigger>
+
+          <DropdownMenu
+            aria-label="ACME features"
+            className="w-[340px]"
+            onMouseLeave={() => {
+              setIsOpen(false);
+            }}
+            itemClasses={{
+              base: "gap-4",
+            }}
+          >
+            <DropdownItem
+              as={Link}
+              key="artist_dmitriy"
+              description={t("artists.description")}
+              startContent={<FontAwesomeIcon icon={faDroplet} name="droplet" />}
+              href="/artist/dmitriy_liubashenko"
+            >
+              Dmitriy Liubashenko
+            </DropdownItem>
+            <DropdownItem
+              as={Link}
+              key="artist_denis"
+              description={t("artists.description")}
+              startContent={<FontAwesomeIcon icon={faDroplet} name="droplet" />}
+              href="/artist/denis_titarev"
+            >
+              Denis Titarev
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+        {/* </ButtonGroup> */}
+        {/* <Link
+            color="foreground"
+            href="/#artists"
+            className="text-white hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
+          >
+            {t("artists")}
+          </Link> */}
+        {/* </NavbarItem> */}
       </NavbarContent>
 
       <NavbarBrand className="grow-0">
@@ -131,23 +201,25 @@ export default function Header() {
         </Link>
       </NavbarBrand>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden sm:flex gap-8 flex-1" justify="center">
         <NavbarItem>
           <Link color="foreground" href="#" className="text-white">
-            Gallery
+            {t("gallery")}
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" href="#" className="text-white">
-            Testimonials
+            {t("testimonials")}
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" href="#" className="text-white">
-            Contact us
+            {t("contact")}
           </Link>
         </NavbarItem>
       </NavbarContent>
+
+      <Lang />
 
       <NavbarMenuToggle
         aria-label={isMenuOpen ? "Close menu" : "Open menu"}

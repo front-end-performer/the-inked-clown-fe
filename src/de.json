@@ -1,4 +1,15 @@
 {
+  "Navigation": {
+    "home": "Home",
+    "about": "Über uns",
+    "artists": {
+      "navItem": "Künstleren",
+      "description": "Mehr Details" 
+    },
+    "gallery": "Galerie",
+    "testimonials": "Referenzen",
+    "contact": "Kontakt"
+  },
   "HomePage": {
     "title": "Willkomen",
     "sectionAbout": {
