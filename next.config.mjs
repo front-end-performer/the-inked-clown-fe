@@ -3,7 +3,18 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    images: {
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: `${process.env.AWS_BUCKET_NAME}.s3.amazonaws.com`,
+            port: '',
+            pathname: '/**',
+          },
+        ],
+      },
+};
 
 export default withNextIntl(nextConfig);
 

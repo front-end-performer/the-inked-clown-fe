@@ -130,7 +130,7 @@ export default function Header() {
           </Link>
         </NavbarItem>
 
-        <Dropdown placement="bottom-end" isOpen={isOpen} backdrop="blur" className="mt-8">
+        <Dropdown placement="bottom-end" isOpen={isOpen} className="mt-8">
           <DropdownTrigger>
             <NavbarItem
               isActive={hash?.startsWith("#artists")}
@@ -151,7 +151,7 @@ export default function Header() {
 
           <DropdownMenu
             aria-label="ACME features"
-            className="w-[340px]"
+            className="w-auto"
             onMouseLeave={() => {
               setIsOpen(false);
             }}

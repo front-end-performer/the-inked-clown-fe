@@ -1,6 +1,8 @@
 import Video from "@/components/Video/video";
 import About from "@/components/About/about";
 import Artists from "@/components/Artists/artists";
+import ImageGallery from "@/components/ImageGallery/ImageGallery";
+import images from "@/app/api/images";
 
 export default function Home() {
   return (
@@ -11,7 +13,7 @@ export default function Home() {
       <Video />
       <About />
       <Artists />
-      <div className="h-screen bg-blue-700"></div>
+      <ImageGallery images={images} />
     </main>
   );
 }
