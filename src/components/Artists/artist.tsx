@@ -13,7 +13,7 @@ export default function Artist(props: any) {
   return (
     <Card className="border-none bg-transparent max-w-full" shadow="sm">
       <CardBody>
-        <div className="grid grid-rows-[auto_auto_1fr] auto-rows-auto md:grid-rows-1 grid-flow-col gap-4">
+        <div className="grid grid-rows-[auto_auto_1fr] auto-rows-auto md:grid-rows-1 grid-flow-col md:gap-4">
           <Image
             as={NextImage}
             width={255}

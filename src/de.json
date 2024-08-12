@@ -4,7 +4,7 @@
     "about": "Über uns",
     "artists": {
       "navItem": "Künstleren",
-      "description": "Mehr Details" 
+      "description": "Mehr Details"
     },
     "gallery": "Galerie",
     "testimonials": "Referenzen",
@@ -43,6 +43,17 @@
         "buttonText": "Mehr anzeigen",
         "alt": "The Inked Clown Künstler"
       }
-    ]
+    ],
+    "footer": {
+      "hours": [
+        { "id": "Monday", "day": "Montag", "time": "11:00 - 18:00" },
+        { "id": "Tuesday", "day": "Dienstag", "time": "11:00 - 18:00" },
+        { "id": "Wednesday", "day": "Mittwoch", "time": "11:00 - 18:00" },
+        { "id": "Thursday", "day": "Donnerstag", "time": "11:00 - 18:00" },
+        { "id": "Friday", "day": "Freitag", "time": "11:00 - 18:00" },
+        { "id": "Saturday", "day": "Samstag", "time": "11:00 - 18:00" },
+        { "id": "Sunday", "day": "Sonntag", "time": "Geschlossen" }
+      ]
+    }
   }
 }

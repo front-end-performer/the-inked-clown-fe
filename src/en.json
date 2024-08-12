@@ -43,6 +43,17 @@
         "buttonText": "See more",
         "alt": "The Inked Clown Artist"
       }
-    ]
+    ],
+    "footer": {
+      "hours": [
+        { "id": "Monday", "day": "Monday", "time": "11:00 - 18:00" },
+        { "id": "Tuesday", "day": "Tuesday", "time": "11:00 - 18:00" },
+        { "id": "Wednesday", "day": "Wednesday", "time": "11:00 - 18:00" },
+        { "id": "Thursday", "day": "Thursday", "time": "11:00 - 18:00" },
+        { "id": "Friday", "day": "Friday", "time": "11:00 - 18:00" },
+        { "id": "Saturday", "day": "Saturday", "time": "11:00 - 18:00" },
+        { "id": "Sunday", "day": "Sunday", "time": "Closed" }
+      ]
+    }
   }
 }

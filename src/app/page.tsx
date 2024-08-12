@@ -3,6 +3,8 @@ import About from "@/components/About/about";
 import Artists from "@/components/Artists/artists";
 import ImageGallery from "@/components/ImageGallery/ImageGallery";
 import images from "@/app/api/images";
+// import Testimonials from "@/components/Testimonials/testimonials";
+import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -14,6 +16,9 @@ export default function Home() {
       <About />
       <Artists />
       <ImageGallery images={images} />
+      {/* <Testimonials /> */}
+      <Footer />
+      {/* <div className="w-[900px] h-[900px]"></div> */}
     </main>
   );
 }
