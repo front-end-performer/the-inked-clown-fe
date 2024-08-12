@@ -14,12 +14,10 @@ import NextImage from "next/image";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCircleArrowLeft,
-  faCircleArrowRight,
+  faChevronLeft,
+  faChevronRight,
   faMagnifyingGlassPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 
 export default function ImageGallery({ images }: any) {
   const [isHovered, setIsHovered] = useState(null);
@@ -73,7 +71,7 @@ export default function ImageGallery({ images }: any) {
   return (
     <section
       id="gallery"
-      className="show-onscroll flex flex-wrap justify-center relative"
+      className="show-onscroll flex flex-col sm:flex-row flex-wrap justify-center relative"
     >
       {images.map((img: any) => {
         const { id, src, alt, width, height } = img;
@@ -83,7 +81,7 @@ export default function ImageGallery({ images }: any) {
             key={id}
             className={`${
               isHovered === id ? "bg-gradient-to-b from-indigo-500" : ""
-            } relative max-w-full w-1/4 h-1/4 z-10 cursor-pointer`}
+            } relative max-w-full w-full h-full sm:w-1/4 sm:h-1/4 z-10 cursor-pointer`}
             onClick={() => handleImageClick(id)}
             onMouseEnter={() => setIsHovered(id)}
             onMouseLeave={() => setIsHovered(null)}
@@ -115,17 +113,35 @@ export default function ImageGallery({ images }: any) {
         );
       })}
 
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="full">
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        size="full"
+        className="bg-black text-white"
+        classNames={{
+            // body: "py-6",
+            // backdrop: "bg-[#292f46]/50 backdrop-opacity-40",
+            // base: "border-[#292f46] bg-[#19172c] dark:bg-[#19172c] text-[#a8b0d3]",
+            header: "pl-8",
+            // footer: "border-t-[1px] border-[#292f46]",
+            closeButton: "mr-8 mt-8 border-4 hover:border-[#FF0F3D] rounded-none hover:bg-transparent text-white",
+          }}
+      >
         <ModalContent>
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                {isImage.artist.length > 0 ? `Artist ${isImage.artist}` : 'Tatto'}
+                {isImage.artist.length > 0
+                  ? `Artist ${isImage.artist}`
+                  : "Tatto"}
               </ModalHeader>
-              <ModalBody>
+              <ModalBody className="flex justify-center items-center">
+                <div className="flex justify-center items-center gap-4 w-full h-full">
                   <FontAwesomeIcon
-                    icon={faCircleArrowLeft}
+                    icon={faChevronLeft}
                     onClick={() => prevImage(isImage.id - 1)}
+                    size="xl"
+                    className="hover:text-[#FF0F3D] hover:cursor-pointer"
                   />
 
                   {isImage && (
@@ -136,15 +152,19 @@ export default function ImageGallery({ images }: any) {
                       alt={isImage.alt}
                       width={isImage.width}
                       height={isImage.height}
+                      className="flex-1 min-h-[350px] min-h-max"
                       radius="none"
                       loading="lazy"
                     />
                   )}
 
                   <FontAwesomeIcon
-                    icon={faCircleArrowRight}
+                    icon={faChevronRight}
                     onClick={() => nextImage(isImage.id + 1)}
+                    size="xl"
+                    className="hover:text-[#FF0F3D] hover:cursor-pointer"
                   />
+                </div>
               </ModalBody>
             </>
           )}
