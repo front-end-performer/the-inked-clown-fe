@@ -8,12 +8,13 @@ import { useTranslations } from "next-intl";
 import moment from "moment";
 import Link from "next/link";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import Contact from "./contact";
 
 export default function Footer() {
   const t = useTranslations("HomePage.footer");
 
   return (
-    <section className="bg-black py-28 px- w-full">
+    <section className="bg-slate-900 py-28 px-2 w-full">
       <div className="grid grid-cols-1 grid-rows-[auto] gap-y-12 sm:grid-cols-3 sm:grid-rows-1 gap-4 max-w-7xl m-auto">
         <div className="px-4 text-white">
           <h2 className="text-[#FF0F3D] text-lg font-semibold underline underline-offset-8 decoration-4 decoration-[#FF0F3D]">
@@ -40,13 +41,19 @@ export default function Footer() {
                 icon={faMapLocationDot}
                 color="white"
                 size="xl"
+                className="max-w-[24px]"
               />
               <address className="font-light">
                 Carl-Schurz-Straße 15 50321 Brühl, Deutschland
               </address>
             </li>
             <li className="flex mb-4 gap-x-4">
-              <FontAwesomeIcon icon={faEnvelope} color="white" size="xl" />
+              <FontAwesomeIcon
+                icon={faEnvelope}
+                color="white"
+                size="xl"
+                className="max-w-[24px]"
+              />
               <Link
                 href="mailto:titarevjuggler@gmail.com"
                 className="font-light"
@@ -55,7 +62,12 @@ export default function Footer() {
               </Link>
             </li>
             <li className="flex mb-4 gap-x-4">
-              <FontAwesomeIcon icon={faPhone} color="white" size="xl" />
+              <FontAwesomeIcon
+                icon={faPhone}
+                color="white"
+                size="xl"
+                className="max-w-[24px]"
+              />
               <Link href="tel:4915753638272" className="font-light">
                 +49 (157) 53638272
               </Link>
@@ -110,6 +122,8 @@ export default function Footer() {
           </ul>
         </div>
       </div>
+
+      <Contact />
     </section>
   );
 }

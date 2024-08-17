@@ -117,7 +117,7 @@ export default function ImageGallery({ images }: any) {
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         size="full"
-        className="bg-black text-white"
+        className="bg-slate-900 text-white"
         classNames={{
             // body: "py-6",
             // backdrop: "bg-[#292f46]/50 backdrop-opacity-40",

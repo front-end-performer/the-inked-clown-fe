@@ -142,6 +142,9 @@ export default function Header() {
                 onMouseEnter={() => {
                   setIsOpen(true);
                 }}
+                onClick={() => {
+                  setIsOpen(false);
+                }}
               >
                 {t("artists.navItem")}
                 <ChevronDown fill="currentColor" size={16} />
@@ -160,22 +163,22 @@ export default function Header() {
             }}
           >
             <DropdownItem
-              as={Link}
               key="artist_dmitriy"
               description={t("artists.description")}
               startContent={<FontAwesomeIcon icon={faDroplet} name="droplet" />}
-              href="/artist/dmitriy_liubashenko"
+              onClick={() => setIsOpen(false)}
             >
-              Dmitriy Liubashenko
+              <Link href="/artist/dmitriy_liubashenko">
+                Dmitriy Liubashenko
+              </Link>
             </DropdownItem>
             <DropdownItem
-              as={Link}
               key="artist_denis"
               description={t("artists.description")}
               startContent={<FontAwesomeIcon icon={faDroplet} name="droplet" />}
-              href="/artist/denis_titarev"
+              onClick={() => setIsOpen(false)}
             >
-              Denis Titarev
+              <Link href="/artist/denis_titarev">Denis Titarev</Link>
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>

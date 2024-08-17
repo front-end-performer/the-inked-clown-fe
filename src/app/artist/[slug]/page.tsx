@@ -8,7 +8,7 @@ export default function LearnPage() {
   
   
   return (
-    <main className="h-screen bg-black pt-48">
+    <main className="h-screen bg-slate-900 pt-48">
       <h1 className="text-white">{topic?.name}</h1>
       <p className="text-white">{topic?.description}</p>
     </main>

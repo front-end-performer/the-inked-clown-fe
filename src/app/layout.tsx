@@ -6,13 +6,15 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 
 import Header from "@/components/Header/header";
+import Footer from "@/components/Footer/footer";
+import Map from "@/components/Map/map";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Front end performer",
+  title: "The Inked Clown Tattoo Studio",
+  description: "Tattoo Studio",
 };
 
 export default async function RootLayout({
@@ -34,6 +36,9 @@ export default async function RootLayout({
             <Header />
 
             <Providers>{children}</Providers>
+            
+            <Footer />
+            <Map />
           </NextUIProvider>
         </NextIntlClientProvider>
       </body>
