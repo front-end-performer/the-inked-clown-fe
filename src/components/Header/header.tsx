@@ -18,11 +18,10 @@ import Image from "next/image";
 import Logo from "../../../public/logos/inkedclown-logo-header.png";
 import { useHash } from "@/useHash";
 import { useTranslations } from "next-intl";
-// import Lang from "@/components/Header/LangSelect/lang";
-import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { ChevronDown } from "@/components/Header/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDroplet } from "@fortawesome/free-solid-svg-icons";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 
 export default function Header() {
   const t = useTranslations("Navigation");

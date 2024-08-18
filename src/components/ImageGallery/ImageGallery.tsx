@@ -5,8 +5,6 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  ModalFooter,
-  Button,
   useDisclosure,
   Image,
 } from "@nextui-org/react";
@@ -25,7 +23,6 @@ export default function ImageGallery({ images }: any) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const handleImageClick = (imageId: any) => {
-    console.log("imageId", imageId);
     const image = images.find((img: any) => img.id === imageId);
     console.log(image);
 
@@ -35,14 +32,12 @@ export default function ImageGallery({ images }: any) {
   };
 
   const nextImage = (id: any) => {
-    console.log("imageId", id);
     const image = images.find((img: any) => img.id === id);
 
     setIsImage(image);
   };
 
   const prevImage = (id: any) => {
-    console.log("imageId", id);
     const image = images.find((img: any) => img.id === id);
 
     setIsImage(image);

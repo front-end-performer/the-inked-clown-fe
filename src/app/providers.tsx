@@ -1,7 +1,8 @@
-'use client';
+// 'use client';
 
-import { ParallaxProvider } from 'react-scroll-parallax';
+// import { ReactNode } from "react";
+// import { ParallaxProvider } from 'react-scroll-parallax';
 
-export function Providers({ children }: { children: React.ReactNode }) {
-  return <ParallaxProvider>{children}</ParallaxProvider>;
-}
+// export function Providers({ children }: { children: ReactNode }) {
+//   return <ParallaxProvider>{children}</ParallaxProvider>;
+// }

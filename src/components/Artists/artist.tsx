@@ -7,9 +7,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 
-export default function Artist(props: any) {
-  const { artist } = props;
-
+export default function Artist({ artist }: any) {
   return (
     <Card className="border-none bg-transparent max-w-full" shadow="sm">
       <CardBody>

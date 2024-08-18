@@ -9,7 +9,7 @@ import Error from 'next/error';
 export default function NotFound() {
   return (
     <html lang="en">
-      <body>
+      <body className='bg-slate-900 text-white'>
         <Error statusCode={404} />
       </body>
     </html>
