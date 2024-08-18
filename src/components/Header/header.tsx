@@ -86,7 +86,7 @@ export default function Header() {
       } 
               ${
                 isScrolled
-                  ? "bg-slate-900/25 transition-spacing duration-500 ease-in-out py-2"
+                  ? "bg-slate-900/85 transition-spacing duration-500 ease-in-out py-2"
                   : ""
               }
         fixed backdrop-blur-none`}
