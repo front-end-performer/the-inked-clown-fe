@@ -1,21 +1,27 @@
-import { NavbarContent, Select, SelectItem } from "@nextui-org/react";
-import {ChangeEvent, ReactNode, useTransition} from 'react';
+'use client';
+
+import clsx from 'clsx';
 import {useParams} from 'next/navigation';
+import {ChangeEvent, ReactNode, useTransition} from 'react';
 import {useRouter, usePathname} from '@/navigation';
-import style from  "@/components/Header/LangSelect/lang.module.css";
 import {Locale} from '@/types';
 
-export default function Lang() {
+type Props = {
+  children: ReactNode;
+  defaultValue: string;
+  label: string;
+};
+
+export default function LocaleSwitcherSelect({
+  children,
+  defaultValue,
+  label
+}: Props) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
   const params = useParams();
 
-  const langValues = [
-    { key: "de", label: "DE" },
-    { key: "en", label: "EN" },
-  ];
-  
   function onSelectChange(event: ChangeEvent<HTMLSelectElement>) {
     const nextLocale = event.target.value as Locale;
     startTransition(() => {
@@ -27,25 +33,28 @@ export default function Lang() {
           // always match for the current route, we can skip runtime checks.
           params
         },
-        {locale: nextLocale}
+        {locale: nextLocale, scroll: false}
       );
     });
   }
 
   return (
-    <NavbarContent as="div" justify="end" className={`${style.select} hidden md:flex max-w-[72px]`}>
-      <Select
-        items={langValues}
-        variant="bordered"
-        aria-label="lang"
-        radius="none"
-        defaultSelectedKeys={["de"]}
-        className="max-w-xs"
-        size="sm"
+    <label
+      className={clsx(
+        'relative text-gray-400',
+        isPending && 'transition-opacity [&:disabled]:opacity-30'
+      )}
+    >
+      <p className="sr-only">{label}</p>
+      <select
+        className="inline-flex appearance-none bg-transparent py-3 pl-2 pr-6"
+        defaultValue={defaultValue}
+        disabled={isPending}
         onChange={onSelectChange}
       >
-        {(animal) => <SelectItem key={animal.key}>{animal.label}</SelectItem>}
-      </Select>
-    </NavbarContent>
+        {children}
+      </select>
+      <span className="pointer-events-none absolute right-2 top-[8px]">⌄</span>
+    </label>
   );
 }

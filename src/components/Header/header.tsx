@@ -18,7 +18,8 @@ import Image from "next/image";
 import Logo from "../../../public/logos/inkedclown-logo-header.png";
 import { useHash } from "@/useHash";
 import { useTranslations } from "next-intl";
-import Lang from "@/components/Header/LangSelect/lang";
+// import Lang from "@/components/Header/LangSelect/lang";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { ChevronDown } from "@/components/Header/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDroplet } from "@fortawesome/free-solid-svg-icons";
@@ -222,7 +223,7 @@ export default function Header() {
         </NavbarItem>
       </NavbarContent>
 
-      <Lang />
+      <LocaleSwitcher />
 
       <NavbarMenuToggle
         aria-label={isMenuOpen ? "Close menu" : "Open menu"}

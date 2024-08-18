@@ -11,6 +11,7 @@
     "contact": "Contact us"
   },
   "HomePage": {
+    "tabTitle": "The Inked Clown Tattoo Studio",
     "title": "Welcome",
     "sectionAbout": {
       "title": "About us",
@@ -55,5 +56,9 @@
         { "id": "Sunday", "day": "Sunday", "time": "Closed" }
       ]
     }
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, de {🇩🇪 DE} en {🇺🇸 EN} other {Unknown}}"
   }
 }
