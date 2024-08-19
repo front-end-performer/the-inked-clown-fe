@@ -14,8 +14,8 @@ export default function IndexPage({ params: { locale } }: Props) {
   // Enable static rendering
   unstable_setRequestLocale(locale);
 
-  const t = useTranslations("HomePage");
-  const s = useTranslations("SocialMedia");
+  const homepage = useTranslations("HomePage");
+  const social = useTranslations("SocialMedia");
 
   return (
     <main
@@ -24,16 +24,16 @@ export default function IndexPage({ params: { locale } }: Props) {
     >
       <Video />
       <About
-        title={t("sectionAbout.title")}
-        subTitle1={t("sectionAbout.subTitle1")}
-        subTitle2={t("sectionAbout.subTitle2")}
-        description={t("sectionAbout.description")}
-        socialMedia={s('label')}
+        title={homepage("sectionAbout.title")}
+        subTitle1={homepage("sectionAbout.subTitle1")}
+        subTitle2={homepage("sectionAbout.subTitle2")}
+        description={homepage("sectionAbout.description")}
+        socialMedia={social('label')}
       />
-      {/* <Artists 
-        artists={t.raw("artists")}
-        socialMedia={s('label')}
-      /> */}
+      <Artists 
+        artists={homepage.raw("artists")}
+        socialMedia={social('label')}
+      />
       {/* <ImageGallery images={images} />  */}
     </main>
   );

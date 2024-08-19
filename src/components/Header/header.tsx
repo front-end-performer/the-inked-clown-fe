@@ -11,6 +11,8 @@ import {
   DropdownTrigger,
   Dropdown,
   DropdownMenu,
+  Button,
+  divider,
 } from "@nextui-org/react";
 import { useState } from "react";
 import Link from "next/link";
@@ -23,7 +25,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDroplet } from "@fortawesome/free-solid-svg-icons";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
 
-export default function Header() {
+export default function Header({ locale }: any) {
   const t = useTranslations("Navigation");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -57,6 +59,10 @@ export default function Header() {
   //   });
   // }, []);
 
+  const test = () => {
+    console.log("click captured");
+  };
+
   const onScrollHandler = (position: number) => {
     if (position <= 2) {
       setIsScrolled(false);
@@ -78,19 +84,8 @@ export default function Header() {
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
-      className={`${
-        isMenuOpen
-          ? "bg-[#FF0F3D]"
-          : "bg-transparent transition-spacing duration-500 ease-in-out py-0"
-      } 
-              ${
-                isScrolled
-                  ? "bg-slate-900/85 transition-spacing duration-500 ease-in-out py-2"
-                  : ""
-              }
-        fixed backdrop-blur-none`}
-      height="88px"
-      onScrollPositionChange={onScrollHandler}
+      isBlurred={false}
+      className="bg-black/50 fixed top-0 left-0 right-0 h-[6rem]"
       classNames={{
         item: [
           "flex",
@@ -107,147 +102,77 @@ export default function Header() {
         ],
       }}
     >
-      <NavbarContent className="hidden sm:flex gap-8 flex-1" justify="center">
+      <NavbarContent className="hidden md:flex gap-4 text-white" justify="end">
         <NavbarItem isActive={hash?.length === 0}>
           <Link
             color="foreground"
-            href="/"
-            className="text-white hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
+            href={`/${locale}`}
+            className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
           >
             {t("home")}
           </Link>
         </NavbarItem>
-        <NavbarItem
-          isActive={hash?.startsWith("#about")}
-          className="text-white"
-        >
+        <NavbarItem isActive={hash?.startsWith("#about")}>
           <Link
-            color="foreground"
-            href="/#about"
-            className="text-white hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
+            href={`/${locale}/#about`}
+            className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
           >
             {t("about")}
           </Link>
         </NavbarItem>
 
-        <Dropdown placement="bottom-end" isOpen={isOpen} className="mt-8">
-          <DropdownTrigger>
-            <NavbarItem
-              isActive={hash?.startsWith("#artists")}
-              className="text-white"
-            >
-              <Link
-                className="text-white hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D] flex items-center gap-2"
-                href="/#artists"
-                onMouseEnter={() => {
-                  setIsOpen(true);
-                }}
-                onClick={() => {
-                  setIsOpen(false);
-                }}
-              >
-                {t("artists.navItem")}
-                <ChevronDown fill="currentColor" size={16} />
-              </Link>
-            </NavbarItem>
-          </DropdownTrigger>
-
-          <DropdownMenu
-            aria-label="ACME features"
-            className="w-auto"
-            onMouseLeave={() => {
-              setIsOpen(false);
-            }}
-            itemClasses={{
-              base: "gap-4",
-            }}
+        <NavbarItem isActive={hash?.startsWith("#artists")}>
+          <Link
+            href={`/${locale}/#artists`}
+            className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
           >
-            <DropdownItem
-              key="artist_dmitriy"
-              description={t("artists.description")}
-              startContent={<FontAwesomeIcon icon={faDroplet} name="droplet" />}
-              onClick={() => setIsOpen(false)}
-            >
-              <Link href="/artist/dmitriy_liubashenko">
-                Dmitriy Liubashenko
-              </Link>
-            </DropdownItem>
-            <DropdownItem
-              key="artist_denis"
-              description={t("artists.description")}
-              startContent={<FontAwesomeIcon icon={faDroplet} name="droplet" />}
-              onClick={() => setIsOpen(false)}
-            >
-              <Link href="/artist/denis_titarev">Denis Titarev</Link>
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-        {/* </ButtonGroup> */}
-        {/* <Link
-            color="foreground"
-            href="/#artists"
-            className="text-white hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
-          >
-            {t("artists")}
-          </Link> */}
-        {/* </NavbarItem> */}
+            {t("artists.navItem")}
+          </Link>
+        </NavbarItem>
       </NavbarContent>
 
-      <NavbarBrand className="grow-0">
-        <Link color="foreground" href="/">
-          <Image
-            className="max-w-[64px]"
-            priority
-            src={Logo}
-            alt="The Inked Clown"
-          />
-        </Link>
-      </NavbarBrand>
+      <NavbarContent justify="center">
+        <NavbarBrand>
+          <Link color="foreground" href="/" className="px-4">
+            <Image
+              className="max-w-[4rem]"
+              priority
+              src={Logo}
+              alt="The Inked Clown"
+            />
+          </Link>
+        </NavbarBrand>
+      </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-8 flex-1" justify="center">
+      <NavbarContent
+        className="hidden md:flex gap-4 text-white"
+        justify="start"
+      >
         <NavbarItem>
-          <Link color="foreground" href="#" className="text-white">
+          <Link color="foreground" href={`/${locale}/#gallery`}>
             {t("gallery")}
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#" className="text-white">
-            {t("testimonials")}
-          </Link>
+          <Link href={`/${locale}/#testimonials`}>{t("testimonials")}</Link>
         </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#" className="text-white">
+        <NavbarItem className="pr-8">
+          <Link color="foreground" href={`/${locale}/#contact`}>
             {t("contact")}
           </Link>
         </NavbarItem>
+
+        <LocaleSwitcher />
       </NavbarContent>
 
-      <LocaleSwitcher />
+      <NavbarContent justify="end" className="md:hidden">
+        <LocaleSwitcher />
 
-      <NavbarMenuToggle
-        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        className="text-white sm:hidden"
-      />
-
-      <NavbarMenu className="bg-[#FF0F3D] pt-4 items-center gap-y-8">
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              color={
-                index === 2
-                  ? "primary"
-                  : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
-              className="w-full"
-              href="#"
-            >
-              {item}
-            </Link>
-          </NavbarMenuItem>
-        ))}
-      </NavbarMenu>
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="md:hidden text-white"
+        />
+      </NavbarContent>
     </Navbar>
   );
 }

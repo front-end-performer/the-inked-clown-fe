@@ -14,7 +14,7 @@ export default function About({
   return (
     <section
       id="about"
-      className="show-onscroll flex justify-center pt-28 w-screen h-full md:min-h-[800px] bg-white relative"
+      className="show-onscroll flex justify-center pt-28 w-screen md:min-h-[800px] h-full bg-white relative"
     >
       <Image
         src="/about/arrow.png"

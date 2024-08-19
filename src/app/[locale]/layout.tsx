@@ -58,7 +58,7 @@ export default async function RootLayout({
       <body className={inter.className} suppressHydrationWarning={true}>
         <NextIntlClientProvider messages={messages}>
           <NextUIProvider>
-            <Header />
+            <Header locale={locale} />
 
             {/* <Providers> */}
             {children}
