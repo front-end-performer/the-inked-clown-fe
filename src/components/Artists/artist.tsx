@@ -7,7 +7,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 
-export default function Artist({ artist }: any) {
+export default function Artist({ artist, socialMedia }: any) {
   return (
     <Card className="border-none bg-transparent max-w-full" shadow="sm">
       <CardBody>
@@ -43,7 +43,7 @@ export default function Artist({ artist }: any) {
             <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-6 w-auto">
               <div className="flex gap-x-6 items-center">
                 <span className="hidden lg:block text-white font-normal">
-                  {artist.socialMediaText}
+                  {socialMedia}
                 </span>
                 <Link href={artist.socialUrl}>
                   <FontAwesomeIcon

@@ -15,6 +15,7 @@ export default function IndexPage({ params: { locale } }: Props) {
   unstable_setRequestLocale(locale);
 
   const t = useTranslations("HomePage");
+  const s = useTranslations("SocialMedia");
 
   return (
     <main
@@ -27,9 +28,11 @@ export default function IndexPage({ params: { locale } }: Props) {
         subTitle1={t("sectionAbout.subTitle1")}
         subTitle2={t("sectionAbout.subTitle2")}
         description={t("sectionAbout.description")}
+        socialMedia={s('label')}
       />
       {/* <Artists 
         artists={t.raw("artists")}
+        socialMedia={s('label')}
       /> */}
       {/* <ImageGallery images={images} />  */}
     </main>
