@@ -37,7 +37,7 @@
         "slug": "/artist/denis_titarev",
         "title": "Artist",
         "description": "My name is Denis Titarev and I'm originally from Ukraine. I've been tattooing for 8 years now. My preferred style is black and white realism, but I also like to work in all other styles. I look forward to seeing you!",
-        "src": "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+        "src": "https://nextui-docs-v2.vercel.app/images/album-cover.png",
         "socialUrl": "www.google.de",
         "buttonText": "See more",
         "alt": "The Inked Clown Artist"
@@ -61,5 +61,26 @@
   },
   "SocialMedia": {
     "label": "Follow us:"
+  },
+  "Legals": {
+    "rights": "The Inked Clown Tattoo Salon. All rights reserved.",
+    "terms": "Terms, Imprint and privacy policy."
+  },
+  "Terms": {
+    "header": "Imprint and privacy policy",
+    "label": "Information according to § 5 TMG:",
+    "address": {
+      "name": "The Inked Clown Tattoo Studio",
+      "street": "Uhlstrasse 91",
+      "zipCity": "50321 Brühl",
+      "tel": "cel: +49 157 53638272",
+      "email": "email: titarev-denis@mail.ru",
+      "extra": "Represented by owner Titarev"
+    },
+    "disclaimer": "Disclaimer",
+    "disclaimerLabel": "Liability for content",
+    "disclaimerText": "The contents of our pages have been created with the greatest care. However, we cannot accept any liability for the accuracy, completeness and timeliness of the contents. As service providers, we are liable for own contents of these pages in accordance with Section 7 Para.1 German Telemedia Act (TMG). However, according to Sections 8 to 10 German Telemedia Act (TMG), service providers are not obligated to monitor submitted or stored information or to search for evidences that indicate illegal activities. Legal obligations to removing information or to blocking the use of information remain unchallenged. In this case, liability is only possible at the time of knowledge about a specific violation of law. If we become aware of such violations, we will remove this content immediately.",
+    "copyrightLabel": "Copyright",
+    "copyrightText": "The content and works on these pages created by the site operators are subject to German copyright law. Duplication, processing, distribution and any type of exploitation outside the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this page are only permitted for private, non-commercial use. Insofar as the content on this page was not created by the operator, the copyrights of third parties are observed. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, we ask you to notify us accordingly. If we become aware of any infringements, we will remove such content immediately."
   }
 }

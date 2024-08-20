@@ -32,12 +32,12 @@
         "alt": "The Inked Clown Künstler"
       },
       {
-        "id": 0,
+        "id": 1,
         "name": "Denis Titarev",
         "title": "Künstler",
         "slug": "/artist/denis_titarev",
         "description": "Mein Name ist Denis Titarev und ich komme ursprünglich aus der Ukraine. Seid nun 8 Jahren tätowiere ich schon. Meine bevorzugter Stil ist schwarz weißer Realismus, jedoch arbeite ich gerne auch in allen andern Stilen. Freue mich auf euch!",
-        "src": "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+        "src": "https://nextui-docs-v2.vercel.app/images/album-cover.png",
         "socialUrl": "www.google.de",
         "buttonText": "Mehr anzeigen",
         "alt": "The Inked Clown Künstler"
@@ -61,5 +61,26 @@
   },
   "SocialMedia": {
     "label": "Folgen Sie uns:"
+  },
+  "Legals": {
+    "rights": "The Inked Clown Tattoo Salon. Alle Rechte vorbehalten.",
+    "terms": "AGB, Impressum und Datenschutz"
+  },
+  "Terms": {
+    "header": "Impressum und Datenschutzerklärung",
+    "label": "Angaben gemäß § 5 TMG:",
+    "address": {
+      "name": "The Inked Clown Tattoo Studio",
+      "street": "Uhlstraße 91",
+      "zipCity": "50321 Brühl",
+      "tel": "Tel: +49 157 53638272",
+      "email": "Email: titarev-denis@mail.ru",
+      "extra": "Vertreten durch Inhaber Titarev"
+    },
+    "disclaimer": "Haftungsausschluss",
+    "disclaimerLabel": "Haftung für Inhalte",
+    "disclaimerText": "Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.",
+    "copyrightLabel": "Urheberrecht",
+    "copyrightText": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen."
   }
 }

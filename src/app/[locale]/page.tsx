@@ -34,7 +34,7 @@ export default function IndexPage({ params: { locale } }: Props) {
         artists={homepage.raw("artists")}
         socialMedia={social('label')}
       />
-      {/* <ImageGallery images={images} />  */}
+      <ImageGallery images={images} /> 
     </main>
   );
 }

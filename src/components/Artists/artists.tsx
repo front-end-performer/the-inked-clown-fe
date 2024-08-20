@@ -14,5 +14,9 @@ export default function Artists({ artists, socialMedia }: any) {
   );
 }
 
-{/* <div className="absolute m-0 top-[50%] left-[50%] transform-center -translate-x-[50%] -translate-y-[50%] flex flex-col gap-y-20 max-w-7xl w-full bg-transparent z-20"> */}
-{/* </div> */}
+{
+  /* <div className="absolute m-0 top-[50%] left-[50%] transform-center -translate-x-[50%] -translate-y-[50%] flex flex-col gap-y-20 max-w-7xl w-full bg-transparent z-20"> */
+}
+{
+  /* </div> */
+}

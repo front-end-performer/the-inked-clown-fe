@@ -9,12 +9,13 @@ import moment from "moment";
 import Link from "next/link";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import Contact from "./contact";
+import Legals from "./legals";
 
 export default function Footer() {
   const t = useTranslations("HomePage.footer");
 
   return (
-    <section className="bg-slate-900 py-28 px-2 w-full">
+    <section id="footer" className="bg-slate-900 pt-28 px-2 w-full">
       <div className="grid grid-cols-1 grid-rows-[auto] gap-y-12 sm:grid-cols-3 sm:grid-rows-1 gap-4 max-w-7xl m-auto">
         <div className="px-4 text-white">
           <h2 className="text-[#FF0F3D] text-lg font-semibold underline underline-offset-8 decoration-4 decoration-[#FF0F3D]">
@@ -124,6 +125,7 @@ export default function Footer() {
       </div>
 
       <Contact />
+      <Legals />
     </section>
   );
 }

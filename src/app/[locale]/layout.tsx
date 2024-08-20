@@ -11,7 +11,7 @@ import {
 } from "next-intl/server";
 import { locales } from "@/config";
 
-import Header from "@/components/Header/header";
+import Navigation from "@/components/Header/navigation";
 import Footer from "@/components/Footer/footer";
 import Map from "@/components/Map/map";
 import "../globals.css";
@@ -58,7 +58,7 @@ export default async function RootLayout({
       <body className={inter.className} suppressHydrationWarning={true}>
         <NextIntlClientProvider messages={messages}>
           <NextUIProvider>
-            <Header locale={locale} />
+            <Navigation locale={locale} />
 
             {/* <Providers> */}
             {children}
