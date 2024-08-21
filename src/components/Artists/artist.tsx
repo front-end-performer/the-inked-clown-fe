@@ -33,7 +33,7 @@ export default function Artist({ artist, socialMedia }: any) {
 
           <div className="flex flex-col gap-y-12 lg:gap-y-6">
             <div className="bg-white p-6">
-              <h2 className="text-lg font-semibold">{artist.name}</h2>
+              <h2 className="text-lg font-semibold font-['abril_fatface_init']">{artist.name}</h2>
 
               <p className="text-normal text-black font-light">
                 {artist.description}

@@ -13,6 +13,14 @@
   "HomePage": {
     "tabTitle": "The Inked Clown Tattoo Studio",
     "title": "Welcome",
+    "hero": {
+      "part1": "We are ",
+      "part2": "The Inked Clown Tattoo",
+      "part3": "get to know us and come by, ",
+      "part4": "really!",
+      "description1": "Experience tattoos like never before with ",
+      "description2": "Book your next tattoo with us and will get you set up with a World Class tattoo artist!"
+    },
     "sectionAbout": {
       "title": "About us",
       "subTitle1": "We are",
@@ -192,7 +200,12 @@
       }
     ],
     "footer": {
-      "hours": [
+      "about": "About us",
+      "location": "Location",
+      "address": "Carl-Schurz-Strasse 15 50321 Bruehl, Germany",
+      "aboutDescription": "The Inked Clown Tattoo is a tattoo studio and gallery based in Brühl, founded by XXX. We have done this and that, achieved this and that and therefore specialize in this and that. Now it's your turn to sit in one of our artist chairs and experience this level of expertise.",
+      "hours": "Open hours",
+      "hoursList": [
         { "id": "Monday", "day": "Monday", "time": "11:00 - 18:00" },
         { "id": "Tuesday", "day": "Tuesday", "time": "11:00 - 18:00" },
         { "id": "Wednesday", "day": "Wednesday", "time": "11:00 - 18:00" },
@@ -210,6 +223,14 @@
   "SocialMedia": {
     "label": "Follow us:"
   },
+  "Contact": {
+    "contact": "Contact us",
+    "name": "Name *",
+    "phone": "Phone",
+    "email": "Email *",
+    "message": "Your message *",
+    "submit": "Send message"
+  },
   "Legals": {
     "rights": "The Inked Clown Tattoo Salon. All rights reserved.",
     "terms": "Terms, Imprint and privacy policy."
@@ -220,7 +241,7 @@
     "address": {
       "name": "The Inked Clown Tattoo Studio",
       "street": "Uhlstrasse 91",
-      "zipCity": "50321 Brühl",
+      "zipCity": "50321 Bruehl",
       "tel": "cel: +49 157 53638272",
       "email": "email: titarev-denis@mail.ru",
       "extra": "Represented by owner Titarev"

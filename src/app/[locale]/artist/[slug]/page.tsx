@@ -133,7 +133,7 @@ export default function ArtistPage({ params: { locale } }: any) {
                 {artist.title}
               </p>
 
-              <h2 className="text-4xl mb-4">{artist.name}</h2>
+              <h2 className="text-4xl mb-4 font-['abril_fatface_init']">{artist.name}</h2>
               <p>{artist.description}</p>
             </div>
           </div>

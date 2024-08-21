@@ -31,6 +31,14 @@ body {
   position: relative; /* custome */
 }
 
+.abril_fatface_init {
+  font-family: var(--font-abril_fatface_init);
+}
+
+.inter_init {
+  font-family: var(--font-inter_init);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

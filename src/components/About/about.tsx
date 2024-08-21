@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { Link } from "@nextui-org/react";
+import { Image, Link } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import "./about.css";
@@ -54,18 +53,20 @@ export default function About({
             <div className="relative top-0 bg-[url('/about/about.jpeg')] bg-[length:110%] bg-contain bg-no-repeat aboutImage w-[400px] h-[400px] z-10" />
           </div>
 
-          <div className="absolute bottom-20 left-[15%] border-8 border-[#FF0F3D] p-16 md:p-20" />
+          <div className="absolute bottom-20 left-[15%] border-8 border-[#FF0F3D] hover:border-slate-900 p-16 md:p-20" />
         </div>
 
         <div className="text-black z-10">
-          <div className="relative flex flex-col w-full justify-start px-8 md:px-16 py-16 border-l-8 border-t-8 border-b-8 border-slate-900">
+          <div className="relative flex flex-col w-full justify-start px-8 md:px-16 py-16 border-l-8 border-t-8 border-b-8 border-slate-900 hover:border-[#FF0F3D]">
             <h3 className="text-xl underline underline-offset-4 text-[#FF0F3D] pb-12">
               {title}
             </h3>
-            <div className="absolute top-8 left-[75%] border-8 border-[#FF0F3D] px-4 py-8 z-0" />
+            <div className="absolute top-8 left-[75%] border-8 border-[#FF0F3D] hover:border-slate-900 px-4 py-8 z-0" />
 
-            <p className="text-4xl lg:text-5xl font-black">{subTitle1}</p>
-            <p className="text-4xl lg:text-5xl font-black text-nowrap z-10">
+            <p className="text-4xl lg:text-5xl font-black font-['abril_fatface_init']">
+              {subTitle1}
+            </p>
+            <p className="text-4xl lg:text-5xl font-black text-nowrap z-10 font-['abril_fatface_init']">
               {subTitle2}
             </p>
           </div>

@@ -3,6 +3,7 @@
 import { Button, Input, Textarea } from "@nextui-org/react";
 import { useFormState } from "react-dom";
 import { sendMessage } from "@/app/actions";
+import { useTranslations } from "next-intl";
 
 export type InitialFormDataState = {
   name: string;
@@ -20,6 +21,7 @@ const initialFormDataState: InitialFormDataState = {
 
 export default function Contact() {
   const [state, formAction] = useFormState(sendMessage, initialFormDataState);
+  const contact = useTranslations("Contact");
 
   return (
     <div
@@ -28,7 +30,7 @@ export default function Contact() {
     >
       <div className="flex-1">
         <h2 className="text-[#FF0F3D] text-lg font-semibold underline underline-offset-8 decoration-4 decoration-[#FF0F3D]">
-          Contact us
+          {contact('contact')}
         </h2>
 
         <form
@@ -36,7 +38,7 @@ export default function Contact() {
           className="mt-4 flex flex-col gap-2 w-full text-white"
         >
           <Input
-            placeholder="Name *"
+            placeholder={contact('name')}
             size="sm"
             color="default"
             radius="none"
@@ -47,8 +49,7 @@ export default function Contact() {
             variant="bordered"
           />
           <Input
-            // defaultValue="300px"
-            placeholder="Email *"
+            placeholder={contact('email')}
             size="sm"
             type="text"
             id="email"
@@ -59,8 +60,7 @@ export default function Contact() {
             variant="bordered"
           />
           <Input
-            // defaultValue="24px"
-            placeholder="Phone"
+            placeholder={contact('phone')}
             size="sm"
             type="text"
             id="phone"
@@ -70,8 +70,7 @@ export default function Contact() {
             variant="bordered"
           />
           <Textarea
-            // defaultValue="30px"
-            placeholder="Your message *"
+            placeholder={contact('message')}
             size="sm"
             type="text"
             id="message"
@@ -88,14 +87,29 @@ export default function Contact() {
             radius="none"
             variant="flat"
           >
-            Send a message
+            {contact('submit')}
           </Button>
           <p aria-live="polite" className="sr-only">
             {state?.message}
           </p>
         </form>
       </div>
-      <div className="border-2 flex-1">2</div>
+      <div className="border-2 flex-1">
+      <video
+        aria-label="Video"
+        height="600"
+        width="768"
+        loop
+        autoPlay
+        className="w-screen inset-0 object-cover h-screen xl:h-auto"
+        playsInline
+        muted
+        poster="/video/poster/poster.jpg"
+      >
+        <source src="/video/theinkedclown-footer.mp4" />
+        Your browser does not support the video tag.
+      </video>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 // import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Abril_Fatface, Inter } from "next/font/google";
 import { NextUIProvider } from "@nextui-org/react";
 // import { Providers } from "../providers";
 import { NextIntlClientProvider } from "next-intl";
@@ -16,7 +16,8 @@ import Footer from "@/components/Footer/footer";
 import Map from "@/components/Map/map";
 import "../globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const abril_fatface_init = Abril_Fatface({ subsets: ["latin"], weight: "400", variable: '--font-abril' });
+const inter_init = Inter({ subsets: ["latin"] });
 
 type Props = {
   children: ReactNode;
@@ -55,7 +56,10 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body
+        className={`${abril_fatface_init.className}, ${inter_init.className}`}
+        suppressHydrationWarning={true}
+      >
         <NextIntlClientProvider messages={messages}>
           <NextUIProvider>
             <Navigation locale={locale} />

@@ -12,28 +12,25 @@ import Contact from "./contact";
 import Legals from "./legals";
 
 export default function Footer() {
-  const t = useTranslations("HomePage.footer");
+  const homepage = useTranslations("HomePage");
+  const social = useTranslations("SocialMedia");
 
   return (
     <section id="footer" className="bg-slate-900 pt-28 px-2 w-full">
       <div className="grid grid-cols-1 grid-rows-[auto] gap-y-12 sm:grid-cols-3 sm:grid-rows-1 gap-4 max-w-7xl m-auto">
         <div className="px-4 text-white">
           <h2 className="text-[#FF0F3D] text-lg font-semibold underline underline-offset-8 decoration-4 decoration-[#FF0F3D]">
-            About us
+          {homepage('footer.about')}
           </h2>
 
           <p className="text-normal font-light mt-4">
-            Das Inked Clown Tattoo ist ein von XXX gegründetes Tattoostudio und
-            eine Galerie mit Sitz in Brühl. Wir haben dies und das gemacht, dies
-            und das erreicht und sind deshalb auf dies und das spezialisiert.
-            Jetzt sind Sie an der Reihe, in einem unserer Künstlerstühle Platz
-            zu nehmen und dieses Maß an Fachwissen zu erleben.
+            {homepage('footer.aboutDescription')}
           </p>
         </div>
 
         <div className="px-4 text-white">
           <h2 className="text-[#FF0F3D] text-lg font-semibold underline underline-offset-8 decoration-4 decoration-[#FF0F3D]">
-            Location
+            {homepage('footer.location')}
           </h2>
 
           <ul className="mt-4">
@@ -45,7 +42,7 @@ export default function Footer() {
                 className="max-w-[24px]"
               />
               <address className="font-light">
-                Carl-Schurz-Straße 15 50321 Brühl, Deutschland
+                {homepage('footer.address')}
               </address>
             </li>
             <li className="flex mb-4 gap-x-4">
@@ -76,7 +73,7 @@ export default function Footer() {
           </ul>
 
           <div className="flex gap-x-4 mt-8">
-            <span className="font-light">Check social media: </span>
+            <span className="font-light">{social('label')}: </span>
 
             <Link href="#">
               <FontAwesomeIcon
@@ -100,12 +97,12 @@ export default function Footer() {
 
         <div className="px-4 text-white">
           <h2 className="text-[#FF0F3D] text-lg font-semibold underline underline-offset-8 decoration-4 decoration-[#FF0F3D]">
-            Hours
+            {homepage('footer.hours')}
           </h2>
 
           <ul className="mt-4">
-            {t &&
-              t.raw("hours").map((hour: any) => {
+            {homepage &&
+              homepage.raw("footer.hoursList").map((hour: any) => {
                 return (
                   <li key={hour.id} className="mb-4">
                     <span

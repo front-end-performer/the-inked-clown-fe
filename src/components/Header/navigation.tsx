@@ -57,14 +57,14 @@ export default function Navigation({ locale }: any) {
     setIsScrolled(true);
   };
 
-  const menuItems = [
-    t("home"),
-    t("about"),
-    t("artists.navItem"),
-    t("gallery"),
-    t("testimonials"),
-    t("contact"),
-  ];
+  // const menuItems = [
+  //   t("home"),
+  //   t("about"),
+  //   t("artists.navItem"),
+  //   t("gallery"),
+  //   t("testimonials"),
+  //   t("contact"),
+  // ];
 
   return (
     <Navbar
@@ -141,9 +141,9 @@ export default function Navigation({ locale }: any) {
             {t("gallery")}
           </Link>
         </NavbarItem>
-        <NavbarItem>
+        {/* <NavbarItem>
           <Link href={`/${locale}/#testimonials`}>{t("testimonials")}</Link>
-        </NavbarItem>
+        </NavbarItem> */}
         <NavbarItem>
           <Link color="foreground" href={`/${locale}/#contact`}>
             {t("contact")}

@@ -13,6 +13,14 @@
   "HomePage": {
     "tabTitle": "The Inked Clown Tattoo Studio",
     "title": "Willkomen",
+    "hero": {
+      "part1": "Wir sind ",
+      "part2": "The Inked Clown Tattoo",
+      "part3": "lerne uns kennen und komm vorbei, ",
+      "part4": "wirklich!",
+      "description1": "Erleben Sie Tattoos wie nie zuvor mit ",
+      "description2": "Buchen Sie Ihr nächstes Tattoo bei uns und wir bringen Sie zu einem Tätowierer der Weltklasse!"
+    },
     "sectionAbout": {
       "title": "Über uns",
       "subTitle1": "Wir sind",
@@ -192,7 +200,12 @@
       }
     ],
     "footer": {
-      "hours": [
+      "about": "Über uns",
+      "location": "Standort",
+      "address": "Carl-Schurz-Straße 15 50321 Brühl, Deutschland",
+      "aboutDescription": "Das Inked Clown Tattoo ist ein von XXX gegründetes Tattoostudio und eine Galerie mit Sitz in Brühl. Wir haben dies und das gemacht, dies und das erreicht und sind deshalb auf dies und das spezialisiert. Jetzt sind Sie an der Reihe, in einem unserer Künstlerstühle Platz zu nehmen und dieses Maß an Fachwissen zu erleben.",
+      "hours": "Öffnungszeiten",
+      "hoursList": [
         { "id": "Monday", "day": "Montag", "time": "11:00 - 18:00" },
         { "id": "Tuesday", "day": "Dienstag", "time": "11:00 - 18:00" },
         { "id": "Wednesday", "day": "Mittwoch", "time": "11:00 - 18:00" },
@@ -209,6 +222,14 @@
   },
   "SocialMedia": {
     "label": "Folgen Sie uns:"
+  },
+  "Contact": {
+    "contact": "Kontaktieren Sie uns",
+    "name": "Name *",
+    "phone": "Handy",
+    "email": "Email *",
+    "message": "Ihre Nachricht *",
+    "submit": "Nachricht senden"
   },
   "Legals": {
     "rights": "The Inked Clown Tattoo Salon. Alle Rechte vorbehalten.",
