@@ -2,6 +2,16 @@ import { locales } from "./config";
 
 export type Locale = (typeof locales)[number];
 
+export type ArtistImage = {
+  id: number;
+  artist: string;
+  description: string;
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+};
+
 export type Artist = {
   id: number;
   name: string;
@@ -11,5 +21,6 @@ export type Artist = {
   src: string;
   socialUrl: string;
   buttonText: string;
+  images: ArtistImage[];
   alt: string;
 };

@@ -4,7 +4,7 @@
     "about": "About us",
     "artists": {
       "navItem": "Artists",
-      "description": "More details" 
+      "description": "More details"
     },
     "gallery": "Gallery",
     "testimonials": "Testimonials",
@@ -29,6 +29,80 @@
         "src": "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
         "socialUrl": "www.google.de",
         "buttonText": "See more",
+        "images": [
+          {
+            "id": 0,
+            "artist": "A",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          },
+          {
+            "id": 1,
+            "artist": "",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          },
+          {
+            "id": 2,
+            "artist": "",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          },
+          {
+            "id": 3,
+            "artist": "",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          },
+          {
+            "id": 4,
+            "artist": "",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          },
+          {
+            "id": 5,
+            "artist": "",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          },
+          {
+            "id": 6,
+            "artist": "",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          },
+          {
+            "id": 7,
+            "artist": "",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          }
+        ],
         "alt": "The Inked Clown Artist"
       },
       {
@@ -40,6 +114,80 @@
         "src": "https://nextui-docs-v2.vercel.app/images/album-cover.png",
         "socialUrl": "www.google.de",
         "buttonText": "See more",
+        "images": [
+          {
+            "id": 0,
+            "artist": "A",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/album-cover.png",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          },
+          {
+            "id": 1,
+            "artist": "",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/album-cover.png",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          },
+          {
+            "id": 2,
+            "artist": "",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/fruit-1.jpeg",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          },
+          {
+            "id": 3,
+            "artist": "",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/album-cover.png",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          },
+          {
+            "id": 4,
+            "artist": "",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/album-cover.png",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          },
+          {
+            "id": 5,
+            "artist": "",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/album-cover.png",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          },
+          {
+            "id": 6,
+            "artist": "",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/album-cover.png",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          },
+          {
+            "id": 7,
+            "artist": "",
+            "description": "",
+            "src": "https://nextui-docs-v2.vercel.app/images/album-cover.png",
+            "width": 700,
+            "height": 350,
+            "alt": "The Inked Clown"
+          }
+        ],
         "alt": "The Inked Clown Artist"
       }
     ],

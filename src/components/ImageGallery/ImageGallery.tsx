@@ -7,6 +7,7 @@ import {
   ModalBody,
   useDisclosure,
   Image,
+  Button,
 } from "@nextui-org/react";
 import NextImage from "next/image";
 import { useState } from "react";
@@ -16,51 +17,25 @@ import {
   faChevronRight,
   faMagnifyingGlassPlus,
 } from "@fortawesome/free-solid-svg-icons";
+import { ArtistImage } from "@/types";
 
 export default function ImageGallery({ images }: any) {
   const [isHovered, setIsHovered] = useState(null);
-  const [isImage, setIsImage] = useState(null);
+  const [isImage, setIsImage] = useState<null | ArtistImage>(null);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const handleImageClick = (imageId: any) => {
-    const image = images.find((img: any) => img.id === imageId);
-    console.log(image);
+  const handleImageClick = (imageId: number) => {
+    const image = images.find((img: ArtistImage) => img.id === imageId);
 
     setIsImage(image);
     // Handle the click event, such as opening a modal with the image
     // return
   };
 
-  const nextImage = (id: any) => {
-    const image = images.find((img: any) => img.id === id);
+  const findImage = (id: number) => {
+    const image = images.find((img: ArtistImage) => img.id === id);
 
     setIsImage(image);
-  };
-
-  const prevImage = (id: any) => {
-    const image = images.find((img: any) => img.id === id);
-
-    setIsImage(image);
-  };
-
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
   };
 
   return (
@@ -114,56 +89,89 @@ export default function ImageGallery({ images }: any) {
         size="full"
         className="bg-slate-900 text-white"
         classNames={{
-            // body: "py-6",
-            // backdrop: "bg-[#292f46]/50 backdrop-opacity-40",
-            // base: "border-[#292f46] bg-[#19172c] dark:bg-[#19172c] text-[#a8b0d3]",
-            header: "pl-8",
-            // footer: "border-t-[1px] border-[#292f46]",
-            closeButton: "mr-8 mt-8 border-4 hover:border-[#FF0F3D] rounded-none hover:bg-transparent text-white",
-          }}
+          header: "pl-8",
+          closeButton:
+            "mr-8 mt-8 border-4 hover:border-[#FF0F3D] rounded-none hover:bg-transparent text-white",
+        }}
       >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">
-                {isImage.artist.length > 0
-                  ? `Artist ${isImage.artist}`
-                  : "Tatto"}
-              </ModalHeader>
-              <ModalBody className="flex justify-center items-center">
-                <div className="flex justify-center items-center gap-4 w-full h-full">
-                  <FontAwesomeIcon
-                    icon={faChevronLeft}
-                    onClick={() => prevImage(isImage.id - 1)}
-                    size="xl"
-                    className="hover:text-[#FF0F3D] hover:cursor-pointer"
-                  />
-
-                  {isImage && (
-                    <Image
-                      key={isImage.id}
-                      as={NextImage}
-                      src={isImage.src}
-                      alt={isImage.alt}
-                      width={isImage.width}
-                      height={isImage.height}
-                      className="flex-1 min-h-[350px] min-h-max"
-                      radius="none"
-                      loading="lazy"
+        {isImage && (
+          <ModalContent>
+            {(onClose) => (
+              <>
+                <ModalHeader className="flex flex-col gap-1">
+                  {isImage.artist.length > 0
+                    ? `Artist ${isImage.artist}`
+                    : "Tatto"}
+                </ModalHeader>
+                <ModalBody className="flex justify-center items-center">
+                  <div className="flex justify-center items-center gap-4 w-full h-full">
+                    {/* <FontAwesomeIcon
+                      icon={faChevronLeft}
+                      onClick={() => findImage(isImage.id - 1)}
+                      size="xl"
+                      className="hover:text-[#FF0F3D] hover:cursor-pointer"
+                    /> */}
+                    <Button
+                      isIconOnly
+                      variant="light"
+                      color="secondary"
+                      className="bg-transparent"
+                      disabled={isImage.id === 0}
+                      endContent={
+                        <FontAwesomeIcon
+                          icon={faChevronLeft}
+                          onClick={() => findImage(isImage.id - 1)}
+                          size="xl"
+                          color="white"
+                          className={`${
+                            isImage.id !== 0
+                              ? "hover:text-[#FF0F3D]"
+                              : "text-neutral-400"
+                          } w-[24px] h-[24px]`}
+                        />
+                      }
                     />
-                  )}
 
-                  <FontAwesomeIcon
-                    icon={faChevronRight}
-                    onClick={() => nextImage(isImage.id + 1)}
-                    size="xl"
-                    className="hover:text-[#FF0F3D] hover:cursor-pointer"
-                  />
-                </div>
-              </ModalBody>
-            </>
-          )}
-        </ModalContent>
+                    {isImage && (
+                      <Image
+                        key={isImage.id}
+                        as={NextImage}
+                        src={isImage.src}
+                        alt={isImage.alt}
+                        width={isImage.width}
+                        height={isImage.height}
+                        className="flex-1 min-h-[350px] min-h-max"
+                        radius="none"
+                        loading="lazy"
+                      />
+                    )}
+
+                    <Button
+                      isIconOnly
+                      variant="light"
+                      color="secondary"
+                      className="bg-transparent"
+                      disabled={isImage.id === images.length - 1}
+                      endContent={
+                        <FontAwesomeIcon
+                          icon={faChevronRight}
+                          onClick={() => findImage(isImage.id + 1)}
+                          size="xl"
+                          color="white"
+                          className={`${
+                            isImage.id !== images.length - 1
+                              ? "hover:text-[#FF0F3D]"
+                              : "text-neutral-400"
+                          } w-[24px] h-[24px]`}
+                        />
+                      }
+                    />
+                  </div>
+                </ModalBody>
+              </>
+            )}
+          </ModalContent>
+        )}
       </Modal>
     </section>
   );
