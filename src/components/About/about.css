@@ -1,6 +1,6 @@
-.aboutImage {
-  transform: rotate(-45deg) translate(-20%, 0);
-}
+/* .aboutImage {
+  transform: rotate(-45deg) translate(30%, 0);
+} */
 
 .arrow {
   -webkit-transform: scale(1);
@@ -43,4 +43,12 @@
   60% {
     transform: translateY(-15px);
   }
+}
+
+.box {
+  width: 200px;
+  height: 80px;
+  border-radius: 50px;
+  background: green;
+  cursor: pointer;
 }

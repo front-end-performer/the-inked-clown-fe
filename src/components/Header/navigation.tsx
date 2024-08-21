@@ -137,7 +137,11 @@ export default function Navigation({ locale }: any) {
         justify="start"
       >
         <NavbarItem>
-          <Link color="foreground" href={`/${locale}/#gallery`}>
+          <Link
+            color="foreground"
+            href={`/${locale}/#gallery`}
+            className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
+          >
             {t("gallery")}
           </Link>
         </NavbarItem>
@@ -145,7 +149,11 @@ export default function Navigation({ locale }: any) {
           <Link href={`/${locale}/#testimonials`}>{t("testimonials")}</Link>
         </NavbarItem> */}
         <NavbarItem>
-          <Link color="foreground" href={`/${locale}/#contact`}>
+          <Link
+            color="foreground"
+            href={`/${locale}/#footer`}
+            className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
+          >
             {t("contact")}
           </Link>
         </NavbarItem>

@@ -1,6 +1,8 @@
+"use client";
 import { Image, Link } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { motion } from "framer-motion";
 import "./about.css";
 
 export default function About({
@@ -49,8 +51,22 @@ export default function About({
             </div>
           </div>
 
-          <div className="relative top-16 overflow-hidden w-[350px] h-[350px] lg:w-[400px] lg:h-[400px] bg-[#FF0F3D] rotate-45 z-0">
-            <div className="relative top-0 bg-[url('/about/about.jpeg')] bg-[length:110%] bg-contain bg-no-repeat aboutImage w-[400px] h-[400px] z-10" />
+          <div className="relative top-16 w-[350px] h-[350px] lg:w-[400px] lg:h-[400px] bg-[#FF0F3D] rotate-45 z-0">
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              className="bg-[url('/about/about.jpeg')] bg-[length:100%] bg-cover bg-no-repeat aboutImage w-[350px] h-[350px] z-10"
+            />
+            <motion.div
+              initial="hidden"
+              transition={{ delay: 4, stiffness: 400, repeat: Infinity, repeatDelay: 2 }}
+              animate={{
+                x: 100,
+                y: 100,
+              }}
+              className="w-[24px] h-[24px] bg-slate-900 absolute bottom-0 right-0 z-20"
+            />
           </div>
 
           <div className="absolute bottom-20 left-[15%] border-8 border-[#FF0F3D] hover:border-slate-900 p-16 md:p-20" />

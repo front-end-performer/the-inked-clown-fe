@@ -27,13 +27,13 @@ export default function Artist({ artist, socialMedia }: any) {
             alt={artist.alt}
           />
 
-          <div className="text-xl underline underline-offset-4 text-[#FF0F3D] text-center">
+          <div className="text-lg underline underline-offset-4 text-[#FF0F3D] text-center">
             {artist.title}
           </div>
 
           <div className="flex flex-col gap-y-12 lg:gap-y-6">
             <div className="bg-white p-6">
-              <h2 className="text-lg font-semibold font-['abril_fatface_init']">{artist.name}</h2>
+              <h2 className="text-2xl font-semibold font-['abril_fatface_init'] leading-10">{artist.name}</h2>
 
               <p className="text-normal text-black font-light">
                 {artist.description}

@@ -53,7 +53,7 @@ export default function Video({
         height="600"
         width="768"
         loop
-        autoPlay
+        // autoPlay
         className="w-screen inset-0 object-cover h-screen xl:h-auto"
         playsInline
         muted
