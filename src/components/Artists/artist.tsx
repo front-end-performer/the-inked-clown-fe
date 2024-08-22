@@ -27,7 +27,7 @@ export default function Artist({ artist, socialMedia }: any) {
             alt={artist.alt}
           />
 
-          <div className="text-lg underline underline-offset-4 text-[#FF0F3D] text-center">
+          <div className="text-lg py-4 sm:py-0 underline underline-offset-4 text-[#FF0F3D] text-center">
             {artist.title}
           </div>
 

@@ -221,10 +221,10 @@
     "locale": "{locale, select, de {🇩🇪 DE} en {🇺🇸 EN} other {Unbekannt}}"
   },
   "SocialMedia": {
-    "label": "Folgen Sie uns:"
+    "label": "Folgen Sie uns"
   },
   "Contact": {
-    "contact": "Kontaktieren Sie uns",
+    "contact": "Jetzt buchen",
     "name": "Name *",
     "phone": "Handy",
     "email": "Email *",
@@ -234,6 +234,10 @@
   "Legals": {
     "rights": "The Inked Clown Tattoo Salon. Alle Rechte vorbehalten.",
     "terms": "AGB, Impressum und Datenschutz"
+  },
+  "Manifest": {
+    "description": "Brühl Tattoo Salon",
+    "name": "The Inked Clown Tattoo Salon"
   },
   "Terms": {
     "header": "Impressum und Datenschutzerklärung",

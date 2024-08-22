@@ -1,6 +1,15 @@
-/* .aboutImage {
-  transform: rotate(-45deg) translate(30%, 0);
-} */
+.waterDrop {
+  position: fixed;
+  padding: 0;
+  box-shadow: 0 12px 15px 0 rgba(255, 15, 59, 0.08);
+  margin: 0 auto;
+  border-radius: 0% 100% 100% 100%;
+  transform: rotate(45deg);
+  clear: left;
+  animation: animate 3s infinite;
+  -webkit-transform: rotate(45deg);
+  -webkit-animation: animate 3s infinite;
+}
 
 .arrow {
   -webkit-transform: scale(1);

@@ -21,7 +21,7 @@ export default function About({
         src="/about/arrow.png"
         width={40}
         height={136}
-        alt="the inked clown arrow"
+        alt="the inked clown - arrow"
         className="arrow animated animatedDelay absolute -top-16 z-10"
       />
 
@@ -60,12 +60,12 @@ export default function About({
             />
             <motion.div
               initial="hidden"
-              transition={{ delay: 4, stiffness: 400, repeat: Infinity, repeatDelay: 2 }}
+              transition={{ duration: .7,  velocity: 3, repeat: Infinity, repeatDelay: 2 }}
               animate={{
-                x: 100,
-                y: 100,
+                x: 150,
+                y: 150,
               }}
-              className="w-[24px] h-[24px] bg-slate-900 absolute bottom-0 right-0 z-20"
+              className="w-[24px] h-[24px] waterDrop bg-[#FF0F3D] absolute bottom-0 right-0 z-20"
             />
           </div>
 

@@ -103,14 +103,8 @@ export default function ImageGallery({ images }: any) {
                     ? `Artist ${isImage.artist}`
                     : "Tatto"}
                 </ModalHeader>
-                <ModalBody className="flex justify-center items-center">
+                <ModalBody className="flex px-0 justify-center items-center">
                   <div className="flex justify-center items-center gap-4 w-full h-full">
-                    {/* <FontAwesomeIcon
-                      icon={faChevronLeft}
-                      onClick={() => findImage(isImage.id - 1)}
-                      size="xl"
-                      className="hover:text-[#FF0F3D] hover:cursor-pointer"
-                    /> */}
                     <Button
                       isIconOnly
                       variant="light"

@@ -1,7 +1,5 @@
-// import type { Metadata } from "next";
 import { Abril_Fatface, Inter } from "next/font/google";
 import { NextUIProvider } from "@nextui-org/react";
-// import { Providers } from "../providers";
 import { NextIntlClientProvider } from "next-intl";
 import { ReactNode } from "react";
 import {
@@ -16,7 +14,11 @@ import Footer from "@/components/Footer/footer";
 import Map from "@/components/Map/map";
 import "../globals.css";
 
-const abril_fatface_init = Abril_Fatface({ subsets: ["latin"], weight: "400", variable: '--font-abril' });
+const abril_fatface_init = Abril_Fatface({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-abril",
+});
 const inter_init = Inter({ subsets: ["latin"] });
 
 type Props = {
@@ -31,17 +33,12 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params: { locale },
 }: Omit<Props, "children">) {
-  const t = await getTranslations({ locale, namespace: "HomePage" });
+  const t = await getTranslations({ locale, namespace: "Manifest" });
 
   return {
-    title: t("tabTitle"),
+    title: t("name"),
   };
 }
-
-// export const metadata: Metadata = {
-//   title: "The Inked Clown Tattoo Studio",
-//   description: "Tattoo Studio",
-// };
 
 export default async function RootLayout({
   children,
@@ -63,11 +60,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <NextUIProvider>
             <Navigation locale={locale} />
-
-            {/* <Providers> */}
             {children}
-            {/* </Providers> */}
-
             <Footer />
             <Map />
           </NextUIProvider>

@@ -221,10 +221,14 @@
     "locale": "{locale, select, de {🇩🇪 DE} en {🇺🇸 EN} other {Unknown}}"
   },
   "SocialMedia": {
-    "label": "Follow us:"
+    "label": "Follow us"
+  },
+  "Manifest": {
+    "description": "Brühl Tattoo Salon",
+    "name": "The Inked Clown Tattoo Salon"
   },
   "Contact": {
-    "contact": "Contact us",
+    "contact": "Book now",
     "name": "Name *",
     "phone": "Phone",
     "email": "Email *",
