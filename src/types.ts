@@ -12,7 +12,7 @@ export type ArtistImage = {
   alt: string;
 };
 
-export type Artist = {
+export type ArtistType = {
   id: number;
   name: string;
   title: string;

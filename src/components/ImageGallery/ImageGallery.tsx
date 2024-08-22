@@ -17,10 +17,10 @@ import {
   faChevronRight,
   faMagnifyingGlassPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import { ArtistImage } from "@/types";
+import { type ArtistImage } from "@/types";
 
 export default function ImageGallery({ images }: any) {
-  const [isHovered, setIsHovered] = useState(null);
+  const [isHovered, setIsHovered] = useState<null | number>(null);
   const [isImage, setIsImage] = useState<null | ArtistImage>(null);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
@@ -43,7 +43,7 @@ export default function ImageGallery({ images }: any) {
       id="gallery"
       className="show-onscroll flex flex-col sm:flex-row flex-wrap justify-center relative"
     >
-      {images.map((img: any) => {
+      {images.map((img: ArtistImage) => {
         const { id, src, alt, width, height } = img;
 
         return (

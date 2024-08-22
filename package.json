@@ -1,6 +1,11 @@
 {
   "name": "theinkedclown-nextjs",
+  "description": "theinkedclown-tattoo webapp",
   "version": "0.1.0",
+  "engines": {
+    "node": "22.x",
+    "yarn": "1.22.x"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",

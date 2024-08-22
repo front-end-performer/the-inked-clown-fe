@@ -11,7 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { type Artist } from "@/types";
+import { type ArtistType } from "@/types";
 import ImageGallery from "@/components/ImageGallery/ImageGallery";
 import images from "@/app/api/images";
 
@@ -21,18 +21,18 @@ export default function ArtistPage({ params: { locale } }: any) {
   const a = useTranslations("Navigation.artists");
   const s = useTranslations("SocialMedia");
 
-  const [artist, setArtist] = useState<null | Artist>(null);
+  const [artist, setArtist] = useState<null | ArtistType>(null);
   const { slug } = useParams<{ slug: string }>();
   const artists = h.raw("artists");
 
   const findArtistById = (id: number) => {
-    const [artist] = artists.filter((artist: Artist) => artist.id === id);
+    const [artist] = artists.filter((artist: ArtistType) => artist.id === id);
 
     setArtist(artist);
   };
 
   useEffect(() => {
-    const [artist] = artists.filter((artist: Artist) =>
+    const [artist] = artists.filter((artist: ArtistType) =>
       artist.slug.includes(slug)
     );
 

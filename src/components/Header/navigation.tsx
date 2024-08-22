@@ -57,15 +57,6 @@ export default function Navigation({ locale }: any) {
     setIsScrolled(true);
   };
 
-  // const menuItems = [
-  //   t("home"),
-  //   t("about"),
-  //   t("artists.navItem"),
-  //   t("gallery"),
-  //   t("testimonials"),
-  //   t("contact"),
-  // ];
-
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
