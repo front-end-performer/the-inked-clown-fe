@@ -7,10 +7,10 @@ import {
   getTranslations,
   unstable_setRequestLocale,
 } from "next-intl/server";
-import { locales } from "@/config";
+import { locales } from "@/i18.config";
 
 import Navigation from "@/components/Header/navigation";
-import Footer from "@/components/Footer/footer";
+// import Footer from "@/components/Footer/footer";
 import Map from "@/components/Map/map";
 import "../globals.css";
 
@@ -61,7 +61,7 @@ export default async function RootLayout({
           <NextUIProvider>
             <Navigation locale={locale} />
             {children}
-            <Footer />
+            {/* <Footer /> */}
             <Map />
           </NextUIProvider>
         </NextIntlClientProvider>

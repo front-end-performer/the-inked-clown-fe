@@ -1,5 +1,5 @@
 import {MetadataRoute} from 'next';
-import {locales, defaultLocale, host} from '@/config';
+import {locales, defaultLocale, host} from '@/i18.config';
 import {getPathname} from '@/navigation';
 
 export default function sitemap(): MetadataRoute.Sitemap {

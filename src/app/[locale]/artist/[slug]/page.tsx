@@ -13,7 +13,6 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { type ArtistType } from "@/types";
 import ImageGallery from "@/components/ImageGallery/ImageGallery";
-import images from "@/app/api/images";
 
 export default function ArtistPage({ params: { locale } }: any) {
   const router = useRouter();
