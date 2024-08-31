@@ -32,7 +32,7 @@
         "id": 0,
         "name": "Dmitriy Liubashenko",
         "title": "Artist",
-        "slug": "/artist/dmitriy_liubashenko",
+        "slug": "/dmitriy_liubashenko",
         "description": "My name is Dima and I come from Ukraine. My preferred style is definitely realism in black and white, but I also like to adapt to other wishes and create an individual and unique design for each customer. Before the tattoo appointment, I like to arrange a personal consultation to discuss everything with the customer. I think it is important to take the time to meet and discuss different options and possibilities.",
         "src": "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
         "socialUrl": "www.google.de",
@@ -116,7 +116,7 @@
       {
         "id": 1,
         "name": "Denis Titarev",
-        "slug": "/artist/denis_titarev",
+        "slug": "/denis_titarev",
         "title": "Artist",
         "description": "My name is Denis Titarev and I'm originally from Ukraine. I've been tattooing for 8 years now. My preferred style is black and white realism, but I also like to work in all other styles. I look forward to seeing you!",
         "src": "https://nextui-docs-v2.vercel.app/images/album-cover.png",

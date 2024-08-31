@@ -1,4 +1,4 @@
-import { locales } from "./i18.config";
+import { locales } from "@/i18n/configs";
 
 export type Locale = (typeof locales)[number];
 

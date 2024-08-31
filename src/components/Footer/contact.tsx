@@ -26,7 +26,7 @@ export default function Contact() {
   return (
     <div
       id="contact"
-      className="show-onscroll max-w-7xl m-auto flex flex-col sm:flex-row gap-4 px-4 mt-6"
+      className="show-onscroll max-w-7xl m-auto flex flex-col sm:flex-row sm:items-end gap-4 px-4 mt-6"
     >
       <div className="flex-1">
         <h2 className="text-[#FF0F3D] text-lg font-semibold underline underline-offset-8 decoration-4 decoration-[#FF0F3D]">
@@ -101,7 +101,7 @@ export default function Contact() {
         width="768"
         loop
         // autoPlay
-        className="w-screen inset-0 object-cover h-screen xl:h-auto"
+        className="w-screen inset-0 object-cover h-auto min-h-[244px] sm:max-h-[244px]"
         playsInline
         muted
         poster="/video/poster/poster.jpg"

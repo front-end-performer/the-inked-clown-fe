@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Navbar,
   NavbarMenuToggle,
@@ -7,14 +8,14 @@ import {
   NavbarItem,
 } from "@nextui-org/react";
 import { useState } from "react";
+import { useHash } from "@/useHash";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../../public/logos/inkedclown-logo-header.png";
-import { useHash } from "@/useHash";
-import { useTranslations } from "next-intl";
-import LocaleSwitcher from "@/components/LocaleSwitcher";
+import LocaleSwitcher from "@/components/LocaleSwitcher/LocaleSwitcher";
 
-export default function Navigation({ locale }: any) {
+export default function Navigation() {
   const t = useTranslations("Navigation");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -61,9 +62,7 @@ export default function Navigation({ locale }: any) {
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
       isBlurred={false}
-      className={`${
-        isScrolled ? "bg-slate-900/50" : "bg-transparent"
-      }  transition-spacing duration-500 ease-in-out fixed top-0 left-0 right-0 h-[6rem]`}
+      className="bg-slate-900/55 transition-spacing duration-500 ease-in-out fixed top-0 left-0 right-0 h-[6rem]"
       onScrollPositionChange={onScrollHandler}
       classNames={{
         item: [
@@ -85,7 +84,7 @@ export default function Navigation({ locale }: any) {
         <NavbarItem isActive={hash?.length === 0}>
           <Link
             color="foreground"
-            href={`/${locale}`}
+            href="/"
             className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
           >
             {t("home")} {isScrolled}
@@ -93,7 +92,7 @@ export default function Navigation({ locale }: any) {
         </NavbarItem>
         <NavbarItem isActive={hash?.startsWith("#about")}>
           <Link
-            href={`/${locale}/#about`}
+            href={`/#about`}
             className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
           >
             {t("about")}
@@ -102,7 +101,7 @@ export default function Navigation({ locale }: any) {
 
         <NavbarItem isActive={hash?.startsWith("#artists")}>
           <Link
-            href={`/${locale}/#artists`}
+            href={`/#artists`}
             className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
           >
             {t("artists.navItem")}
@@ -130,7 +129,7 @@ export default function Navigation({ locale }: any) {
         <NavbarItem>
           <Link
             color="foreground"
-            href={`/${locale}/#gallery`}
+            href={`/#gallery`}
             className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
           >
             {t("gallery")}
@@ -142,7 +141,7 @@ export default function Navigation({ locale }: any) {
         <NavbarItem>
           <Link
             color="foreground"
-            href={`/${locale}/#footer`}
+            href={`/#footer`}
             className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
           >
             {t("contact")}

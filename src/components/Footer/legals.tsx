@@ -10,7 +10,7 @@ export default function Legals() {
       <p className="text-xs font-light">
         © {new Date().getFullYear()} {t("rights")}
       </p>
-      <Link href={`/${locale}/terms`} className="text-xs font-light text-white hover:text-[#FF0F3D]">
+      <Link href="/terms" className="text-xs font-light text-white hover:text-[#FF0F3D]">
         {t("terms")}
       </Link>
     </div>

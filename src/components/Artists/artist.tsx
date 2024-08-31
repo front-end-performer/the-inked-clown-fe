@@ -64,7 +64,9 @@ export default function Artist({ artist, socialMedia }: any) {
                 </Link>
               </div>
 
-              <Link href={artist.slug}>
+              <Link href={{
+                pathname: `/artist/${artist.slug}`,
+              }}>
                 <Button
                   title="See artist gallery"
                   radius="none"

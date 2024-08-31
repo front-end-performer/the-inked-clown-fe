@@ -1,7 +1,7 @@
 "use client";
 
 import Header from "@/components/Header/header";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Button, Link, Image } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
@@ -14,10 +14,10 @@ import { useEffect, useState } from "react";
 import { type ArtistType } from "@/types";
 import ImageGallery from "@/components/ImageGallery/ImageGallery";
 
-export default function ArtistPage({ params: { locale } }: any) {
+export default function ArtistPage() {
   const router = useRouter();
+  const locale = useLocale();
   const h = useTranslations("HomePage");
-  const a = useTranslations("Navigation.artists");
   const s = useTranslations("SocialMedia");
 
   const [artist, setArtist] = useState<null | ArtistType>(null);
@@ -30,22 +30,35 @@ export default function ArtistPage({ params: { locale } }: any) {
     setArtist(artist);
   };
 
+  const noArtist = () => {
+    return router.push(`/#artists`);
+  };
+
   useEffect(() => {
     const [artist] = artists.filter((artist: ArtistType) =>
       artist.slug.includes(slug)
     );
 
     if (!artist) {
-      router.push(`/${locale}#artists`);
+      noArtist();
       return;
     }
 
     setArtist(artist);
-  }, [slug]);
+  }, [slug, locale]);
+
+  useEffect(() => {
+    if (!artist) {
+      noArtist();
+      return;
+    }
+
+    router.replace(`/artist/${artist.slug}`);
+  }, [artist]);
 
   return (
     <main className="h-full bg-[url('/artists/artist_bg.jpg')] bg-cover bg-no-repeat">
-      <Header title={a("navItem")} />
+      <Header title={artist?.title} />
 
       {artist && (
         <div className="max-w-7xl flex flex-col sm:flex-row justify-center m-auto py-16">
@@ -132,7 +145,9 @@ export default function ArtistPage({ params: { locale } }: any) {
                 {artist.title}
               </p>
 
-              <h2 className="text-4xl mb-4 font-['abril_fatface_init']">{artist.name}</h2>
+              <h2 className="text-4xl mb-4 font-['abril_fatface_init']">
+                {artist.name}
+              </h2>
               <p>{artist.description}</p>
             </div>
           </div>
