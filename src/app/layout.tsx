@@ -10,7 +10,7 @@ import {
 import "@/app/globals.css";
 
 import Navigation from "@/components/Header/navigation";
-import Footer from "@/components/Footer/footer";
+import MainFooter from "@/components/Footer/mainFooter";
 import Map from "@/components/Map/map";
 
 const abril_fatface_init = Abril_Fatface({
@@ -44,7 +44,7 @@ export default async function LocaleLayout({
           <NextUIProvider>
             <Navigation />
             {children}
-            <Footer />
+            <MainFooter />
             <Map />
           </NextUIProvider>
         </NextIntlClientProvider>
