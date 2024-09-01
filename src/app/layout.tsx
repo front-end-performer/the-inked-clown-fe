@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 import {
   getMessages,
   getLocale,
-  //   // unstable_setRequestLocale,
+  unstable_setRequestLocale,
 } from "next-intl/server";
 import "@/app/globals.css";
 
@@ -24,11 +24,9 @@ type Props = {
   children: ReactNode;
 };
 
-export default async function LocaleLayout({
-  children,
-}: Readonly<Props>) {
+export default async function LocaleLayout({ children }: Readonly<Props>) {
   const locale = await getLocale();
-  // unstable_setRequestLocale(locale);
+  unstable_setRequestLocale(locale);
 
   // Providing all messages to the client
   // side is the easiest way to get started
