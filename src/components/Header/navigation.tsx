@@ -18,36 +18,8 @@ import LocaleSwitcher from "@/components/LocaleSwitcher/LocaleSwitcher";
 export default function Navigation() {
   const t = useTranslations("Navigation");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [_, setIsScrolled] = useState(false);
   const { hash } = useHash();
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const [activeSection, setActiveSection] = useState("");
-  // const sections = useRef([]);
-
-  // const observerOptions = {
-  //   root: null,
-  //   rootMargin: "0px",
-  //   threshold: 0.37,
-  // };
-
-  // useEffect(() => {
-  //   const callback = function (entries: any) {
-  //     entries.forEach((entry: any) => {
-  //       if (entry.isIntersecting) {
-  //         entry.target.classList.add("is-visible");
-  //       } else {
-  //         entry.target.classList.remove("is-visible");
-  //       }
-  //     });
-  //   };
-
-  //   const observer = new IntersectionObserver(callback, observerOptions);
-  //   const targets = document.querySelectorAll(".show-onscroll");
-  //   targets.forEach((target) => {
-  //     observer.observe(target);
-  //   });
-  // }, []);
 
   const onScrollHandler = (position: number) => {
     if (position <= 10) {
