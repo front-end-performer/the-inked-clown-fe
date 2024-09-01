@@ -1,27 +1,26 @@
-import { Abril_Fatface, Inter } from "next/font/google";
+import type { Metadata } from "next";
+import { ReactNode } from "react";
 import { NextUIProvider } from "@nextui-org/react";
 import { NextIntlClientProvider } from "next-intl";
-import { ReactNode } from "react";
 import {
   getMessages,
   getLocale,
   unstable_setRequestLocale,
 } from "next-intl/server";
+import { abril_fatface_init, inter_init } from "@/configs/fonts";
 import "@/app/globals.css";
 
 import Navigation from "@/components/Header/navigation";
 import MainFooter from "@/components/Footer/mainFooter";
 import Map from "@/components/Map/map";
 
-const abril_fatface_init = Abril_Fatface({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-abril",
-});
-const inter_init = Inter({ subsets: ["latin"] });
-
 type Props = {
   children: ReactNode;
+};
+
+export const metadata: Metadata = {
+  title: "The Inked Clown Tattoo Studio",
+  description: "The Inked Clown Tattoo Studio",
 };
 
 export default async function LocaleLayout({ children }: Readonly<Props>) {

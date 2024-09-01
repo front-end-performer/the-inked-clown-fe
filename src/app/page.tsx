@@ -1,5 +1,6 @@
-import { useTranslations } from "next-intl";
-// import { unstable_setRequestLocale } from "next-intl/server";
+import { useLocale, useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
+
 import Video from "@/components/Video/video";
 import About from "@/components/About/about";
 import Artists from "@/components/Artists/artists";
@@ -7,8 +8,9 @@ import ImageGallery from "@/components/ImageGallery/ImageGallery";
 import images from "@/app/api/images";
 
 export default function IndexPage() {
+  const locale = useLocale();
   // Enable static rendering
-  // unstable_setRequestLocale(locale);
+  unstable_setRequestLocale(locale);
 
   const homepage = useTranslations("HomePage");
   const social = useTranslations("SocialMedia");
@@ -39,7 +41,7 @@ export default function IndexPage() {
         artists={homepage.raw("artists")}
         socialMedia={social("label")}
       />
-      <ImageGallery images={images} /> 
+      <ImageGallery images={images} />
     </main>
   );
 }

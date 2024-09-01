@@ -81,18 +81,17 @@ export default function Navigation() {
       }}
     >
       <NavbarContent className="hidden md:flex text-white gap-8" justify="end">
-        <NavbarItem isActive={hash?.length === 0}>
+        <NavbarItem isActive={hash?.length === 0 || hash?.startsWith("#home")}>
           <Link
-            color="foreground"
-            href="/"
+            href="/#home"
             className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
           >
-            {t("home")} {isScrolled}
+            {t("home")}
           </Link>
         </NavbarItem>
         <NavbarItem isActive={hash?.startsWith("#about")}>
           <Link
-            href={`/#about`}
+            href="#about"
             className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
           >
             {t("about")}
@@ -101,7 +100,7 @@ export default function Navigation() {
 
         <NavbarItem isActive={hash?.startsWith("#artists")}>
           <Link
-            href={`/#artists`}
+            href="/#artists"
             className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
           >
             {t("artists.navItem")}
@@ -111,7 +110,7 @@ export default function Navigation() {
 
       <NavbarContent justify="center">
         <NavbarBrand>
-          <Link color="foreground" href="/" className="px-4">
+          <Link color="foreground" href="/#home" className="px-4">
             <Image
               className="max-w-[4rem]"
               priority
@@ -129,19 +128,16 @@ export default function Navigation() {
         <NavbarItem>
           <Link
             color="foreground"
-            href={`/#gallery`}
+            href="/#gallery"
             className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
           >
             {t("gallery")}
           </Link>
         </NavbarItem>
-        {/* <NavbarItem>
-          <Link href={`/${locale}/#testimonials`}>{t("testimonials")}</Link>
-        </NavbarItem> */}
         <NavbarItem>
           <Link
             color="foreground"
-            href={`/#footer`}
+            href="/#footer"
             className="hover:underline underline-offset-8 decoration-4 decoration-[#FF0F3D]"
           >
             {t("contact")}

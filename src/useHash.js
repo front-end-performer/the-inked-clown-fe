@@ -37,22 +37,3 @@ export function useHash() {
 
   return { hash: isClient ? hash : null, removeHash };
 }
-// import { useState, useEffect } from "react";
-
-// export const useHash = () => {
-//   const [hash, setHash] = useState(window.location.hash);
-
-//   useEffect(() => {
-//     const onHashChange = () => {
-//       setHash(window.location.hash);
-//     };
-
-//     window.addEventListener("hashchange", onHashChange);
-
-//     return () => window.removeEventListener("hashchange", onHashChange);
-//   }, []);
-
-//   console.log('hash', hash);
-
-//   return hash;
-// };
