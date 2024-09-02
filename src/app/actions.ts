@@ -10,7 +10,7 @@ export async function sendMessage(prevState: any, formData: FormData) {
   const message = formData.get("message");
 
   const msg = {
-    to: "likbez08@gmail.com", // Change to your recipient
+    to: "test@gmail.com", // Change to your recipient
     from: email, // Change to your verified sender
     subject: `From ${name}`,
     // text: `${phone ? `Tel: ${phone}` : "Tel: ..."} ${message}`,
