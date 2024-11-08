@@ -1,17 +1,21 @@
-"use client";
-
-import { Card, CardBody, Image, Button } from "@nextui-org/react";
+import type { ArtistType } from "@/lib/features";
+import { Image, Button } from "@nextui-org/react";
 import NextImage from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 
-export default function Artist({ artist, socialMedia }: any) {
+type Props = {
+  artist: ArtistType;
+  socialMedia: string;
+};
+
+export default function Artist({ artist, socialMedia }: Props) {
   return (
-    <Card className="border-none bg-transparent max-w-full" shadow="sm">
-      <CardBody>
-        <div className="grid grid-rows-[auto_auto_1fr] auto-rows-auto md:grid-rows-1 grid-flow-col md:gap-4">
+    <div className="w-full md:px-4 xl:px-0">
+      <div className="flex flex-col md:flex-row justify-start gap-2">
+        <div className="flex justify-center items-center shrink-0">
           <Image
             as={NextImage}
             width={255}
@@ -23,38 +27,44 @@ export default function Artist({ artist, socialMedia }: any) {
               img: ["origin-center hover:scale-105"],
               wrapper: ["w-full m-auto col-span-3"],
             }}
-            src={artist.src}
-            alt={artist.alt}
+            src={artist.url}
+            alt={artist.slug}
           />
+        </div>
 
-          <div className="text-lg py-4 sm:py-0 underline underline-offset-4 text-[#FF0F3D] text-center">
-            {artist.title}
+        <div className="md:max-w-[92px] w-full">
+          <h3 className="text-lg py-4 sm:py-0 underline underline-offset-4 text-[#FF0F3D] text-center md:text-right">
+            {artist.name.includes("Olesia") ? "Künstler/in" : "Künstler"}
+          </h3>
+        </div>
+
+        <div className="w-full">
+          <div className="bg-white p-4">
+            <h2 className="text-2xl font-semibold font-['abril_fatface_init'] leading-10">
+              {artist.name}
+            </h2>
+
+            <p className="text-normal text-black font-light">
+              {artist.description}
+            </p>
           </div>
 
-          <div className="flex flex-col gap-y-12 lg:gap-y-6">
-            <div className="bg-white p-6">
-              <h2 className="text-2xl font-semibold font-['abril_fatface_init'] leading-10">{artist.name}</h2>
-
-              <p className="text-normal text-black font-light">
-                {artist.description}
-              </p>
-            </div>
-
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-6 w-auto">
-              <div className="flex gap-x-6 items-center">
-                <span className="hidden lg:block text-white font-normal">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 w-full mt-2 px-4 xl:px-0">
+            <div className="flex gap-x-4 items-center justify-between w-full items-center">
+              <div className="flex gap-x-4">
+                <span className="hidden lg:inline text-white font-normal">
                   {socialMedia}
                 </span>
-                <Link href={artist.socialUrl}>
+                <Link href={artist.instagram}>
                   <FontAwesomeIcon
-                    icon={faTwitter}
+                    icon={faInstagram}
                     size="xl"
                     color="white"
                     className="w-9 h-9 hover:text-[#FF0F3D]"
                   />
                 </Link>
 
-                <Link href={artist.socialUrl}>
+                <Link href={artist.facebook}>
                   <FontAwesomeIcon
                     icon={faFacebook}
                     size="xl"
@@ -64,11 +74,14 @@ export default function Artist({ artist, socialMedia }: any) {
                 </Link>
               </div>
 
-              <Link href={{
-                pathname: `/artist/${artist.slug}`,
-              }}>
+              <Link
+                href={{
+                  pathname: `/artist/${artist.slug}`,
+                }}
+                className="block"
+              >
                 <Button
-                  title="See artist gallery"
+                  title="Siehe Künstlergalerie"
                   radius="none"
                   className="text-normal text-white bg-[#FF0F3D] md:bg-transparent md:hover:bg-[#FF0F3D]"
                   endContent={
@@ -80,13 +93,13 @@ export default function Artist({ artist, socialMedia }: any) {
                     />
                   }
                 >
-                  {artist.buttonText}
+                  Mehr anzeigen
                 </Button>
               </Link>
             </div>
           </div>
         </div>
-      </CardBody>
-    </Card>
+      </div>
+    </div>
   );
 }

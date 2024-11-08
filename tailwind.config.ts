@@ -1,9 +1,9 @@
+import { colors } from "@nextui-org/react";
 import type { Config } from "tailwindcss";
-const {nextui} = require("@nextui-org/react");
-
+const { nextui } = require("@nextui-org/react");
 
 const config: Config = {
-  darkMode: ['selector', '[data-mode="dark"]'],
+  darkMode: ["selector", '[data-mode="dark"]'],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",

@@ -13,6 +13,9 @@ import "@/app/globals.css";
 import Navigation from "@/components/Header/navigation";
 import MainFooter from "@/components/Footer/mainFooter";
 import Map from "@/components/Map/map";
+import { NextAuthSessionProvider } from "@/providers";
+import { getServerSession } from "next-auth";
+import authOptions from "./api/auth/authOptions";
 
 type Props = {
   children: ReactNode;
@@ -24,6 +27,7 @@ export const metadata: Metadata = {
 };
 
 export default async function LocaleLayout({ children }: Readonly<Props>) {
+  const session = await getServerSession(authOptions);
   const locale = await getLocale();
   unstable_setRequestLocale(locale);
 
@@ -33,19 +37,23 @@ export default async function LocaleLayout({ children }: Readonly<Props>) {
 
   return (
     <html lang={locale}>
-      <body
-        className={`${abril_fatface_init.className}, ${inter_init.className}`}
-        suppressHydrationWarning={true}
-      >
-        <NextIntlClientProvider messages={messages}>
-          <NextUIProvider>
-            <Navigation />
-            {children}
-            <MainFooter />
-            <Map />
-          </NextUIProvider>
-        </NextIntlClientProvider>
-      </body>
+        <NextAuthSessionProvider>
+          <body
+            className={`${abril_fatface_init.className}, ${inter_init.className}`}
+            suppressHydrationWarning={true}
+          >
+            <NextIntlClientProvider messages={messages}>
+              <NextUIProvider>
+                <Navigation session={session} />
+
+                <main>{children}</main>
+
+                {!session && <MainFooter />}
+                {!session && <Map />}
+              </NextUIProvider>
+            </NextIntlClientProvider>
+          </body>
+        </NextAuthSessionProvider>
     </html>
   );
 }

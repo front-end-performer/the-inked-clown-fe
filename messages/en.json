@@ -4,7 +4,9 @@
     "about": "About us",
     "artists": {
       "navItem": "Artists",
-      "description": "More details"
+      "description": "More details",
+      "tattoo": "Tattoo Artist",
+      "nails": "Nägeln Artist"
     },
     "gallery": "Gallery",
     "testimonials": "Testimonials",
@@ -237,7 +239,9 @@
   },
   "Legals": {
     "rights": "The Inked Clown Tattoo Salon. All rights reserved.",
-    "terms": "Terms, Imprint and privacy policy."
+    "terms": "Terms, Imprint and privacy policy.",
+    "login": "Login",
+    "logout": "Log out"
   },
   "Terms": {
     "header": "Imprint and privacy policy",

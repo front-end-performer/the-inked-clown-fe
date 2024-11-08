@@ -4,10 +4,12 @@
     "about": "Über uns",
     "artists": {
       "navItem": "Künstleren",
+      "tattoo": "Tattoo Künstler",
+      "nails": "Nägeln Künstler",
       "description": "Mehr Details"
     },
     "gallery": "Galerie",
-    "testimonials": "Referenzen",
+    "testimonials": "Erfahrungsberichte",
     "contact": "Kontakt"
   },
   "HomePage": {
@@ -233,7 +235,9 @@
   },
   "Legals": {
     "rights": "The Inked Clown Tattoo Salon. Alle Rechte vorbehalten.",
-    "terms": "AGB, Impressum und Datenschutz"
+    "terms": "AGB, Impressum und Datenschutz",
+    "login": "Anmelden",
+    "logout": "Abmelden"
   },
   "Manifest": {
     "description": "Brühl Tattoo Salon",

@@ -1,11 +1,8 @@
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import LocaleSwitcherSelect from "./LocaleSwitcherSelect";
-// import { locales } from "@/i18n/configs";
 
-export default function LocaleSwitcher(props: any) {
+export default function LocaleSwitcher() {
   const locale = useLocale();
-  // const lang = new Set(['de', 'en']);
-  // const t = useTranslations("LocaleSwitcher");
 
   return (
     <LocaleSwitcherSelect
@@ -24,15 +21,4 @@ export default function LocaleSwitcher(props: any) {
       ]}
     />
   );
-}
-
-{
-  /* {locales.map((cur) => (
-  <option key={cur} value={cur}>
-    {t("locale", { locale: cur })}
-  </option>
-))} */
-}
-{
-  /* </LocaleSwitcherSelect> */
 }

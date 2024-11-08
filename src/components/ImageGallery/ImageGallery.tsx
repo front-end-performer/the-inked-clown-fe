@@ -18,58 +18,64 @@ import {
   faMagnifyingGlassPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { type ArtistImage } from "@/types";
+// import { useAppContext } from "@/app/context/context";
 
-export default function ImageGallery({ images }: any) {
-  const [isHovered, setIsHovered] = useState<null | number>(null);
-  const [isImage, setIsImage] = useState<null | ArtistImage>(null);
+export default function ImageGallery({photos} : any) {
+  const [isHovered, setIsHovered] = useState<string>("");
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  console.log(photos);
+  
+  // const [isImage, setIsImage] = useState<ArtistImage | null>(null);
+  // const data: any = useAppContext();
 
-  const handleImageClick = (imageId: number) => {
-    const image = images.find((img: ArtistImage) => img.id === imageId);
+  // if (!data) {
+  //   return null;
+  // }
 
-    setIsImage(image);
-    // Handle the click event, such as opening a modal with the image
-    // return
-  };
+  // const handleImageClick = (imageId: string) => {
+  //   const image = data.images.find((img: ArtistImage) => img._id === imageId);
 
-  const findImage = (id: number) => {
-    const image = images.find((img: ArtistImage) => img.id === id);
+  //   setIsImage(image);
+  //   // Handle the click event, such as opening a modal with the image
+  //   // return
+  // };
 
-    setIsImage(image);
-  };
+  // const findImage = (id: number) => {
+  //   const image = data.images.find((img: ArtistImage, i: number) => i === id);
+  //   setIsImage(image);
+  // };
 
   return (
     <section
       id="gallery"
-      className="show-onscroll flex flex-col sm:flex-row flex-wrap justify-center relative"
+      className="show-onscroll grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative"
     >
-      {images.map((img: ArtistImage) => {
-        const { id, src, alt, width, height } = img;
+      PHOTOS
+      {/* {photos && photos.data.map((img: ArtistImage) => {
+        const { _id, url, slug } = img;
 
         return (
           <div
-            key={id}
-            className={`${
-              isHovered === id ? "bg-gradient-to-b from-indigo-500" : ""
-            } relative max-w-full w-full h-full sm:w-1/4 sm:h-1/4 z-10 cursor-pointer`}
-            onClick={() => handleImageClick(id)}
-            onMouseEnter={() => setIsHovered(id)}
-            onMouseLeave={() => setIsHovered(null)}
+            key={_id}
+            className="cursor-pointer relative"
+            // onClick={() => handleImageClick(_id)}
+            onMouseEnter={() => setIsHovered(_id)}
+            onMouseLeave={() => setIsHovered("")}
           >
             <Image
               isZoomed
               as={NextImage}
-              src={src}
-              alt={alt}
-              width={width}
-              height={height}
+              src={url}
+              alt={slug}
+              width={350}
+              height={350}
               radius="none"
-              loading="lazy"
+              className="max-w-[350px] max-h-[350px]"
             />
 
             <div
               className={`${
-                isHovered !== id ? "hidden" : ""
+                isHovered !== _id ? "hidden" : ""
               } absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-8 border-[#FF0F3D] p-6 hover:bg-[#FF0F3D]/50 z-10 cursor-pointer`}
               onClick={onOpen}
             >
@@ -81,9 +87,9 @@ export default function ImageGallery({ images }: any) {
             </div>
           </div>
         );
-      })}
+      })} */}
 
-      <Modal
+      {/* <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         size="full"
@@ -93,15 +99,13 @@ export default function ImageGallery({ images }: any) {
           closeButton:
             "mr-8 mt-8 border-4 hover:border-[#FF0F3D] rounded-none hover:bg-transparent text-white",
         }}
-      >
-        {isImage && (
+      > */}
+        {/* {isImage && (
           <ModalContent>
             {(onClose) => (
               <>
                 <ModalHeader className="flex flex-col gap-1">
-                  {isImage.artist.length > 0
-                    ? `Artist ${isImage.artist}`
-                    : "Tatto"}
+                  {isImage.slug}
                 </ModalHeader>
                 <ModalBody className="flex px-0 justify-center items-center">
                   <div className="flex justify-center items-center gap-4 w-full h-full">
@@ -110,34 +114,37 @@ export default function ImageGallery({ images }: any) {
                       variant="light"
                       color="secondary"
                       className="bg-transparent"
-                      disabled={isImage.id === 0}
+                      disabled={data.images.indexOf(isImage) === 0}
                       endContent={
                         <FontAwesomeIcon
                           icon={faChevronLeft}
-                          onClick={() => findImage(isImage.id - 1)}
+                          onClick={() =>
+                            findImage(data.images.indexOf(isImage) - 1)
+                          }
                           size="xl"
-                          color="white"
-                          className={`${
-                            isImage.id !== 0
-                              ? "hover:text-[#FF0F3D]"
-                              : "text-neutral-400"
-                          } w-[24px] h-[24px]`}
+                          color={`${
+                            data.images.indexOf(isImage) === 0
+                              ? "black"
+                              : "white"
+                          }`}
+                          className={`w-[24px] h-[24px]`}
                         />
                       }
                     />
 
                     {isImage && (
-                      <Image
-                        key={isImage.id}
-                        as={NextImage}
-                        src={isImage.src}
-                        alt={isImage.alt}
-                        width={isImage.width}
-                        height={isImage.height}
-                        className="flex-1 min-h-[350px] min-h-max"
-                        radius="none"
-                        loading="lazy"
-                      />
+                      <div style={{ display: "flex", flexDirection: "column" }}>
+                        <Image
+                          alt={isImage.slug}
+                          src={isImage.url}
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                          }}
+                          className="md:max-h-[600px]"
+                          sizes="100vw"
+                        />
+                      </div>
                     )}
 
                     <Button
@@ -145,18 +152,23 @@ export default function ImageGallery({ images }: any) {
                       variant="light"
                       color="secondary"
                       className="bg-transparent"
-                      disabled={isImage.id === images.length - 1}
+                      disabled={
+                        data.images.indexOf(isImage) === data.images.length - 1
+                      }
                       endContent={
                         <FontAwesomeIcon
                           icon={faChevronRight}
-                          onClick={() => findImage(isImage.id + 1)}
+                          onClick={() =>
+                            findImage(data.images.indexOf(isImage) + 1)
+                          }
                           size="xl"
-                          color="white"
-                          className={`${
-                            isImage.id !== images.length - 1
-                              ? "hover:text-[#FF0F3D]"
-                              : "text-neutral-400"
-                          } w-[24px] h-[24px]`}
+                          color={`${
+                            data.images.indexOf(isImage) ===
+                            data.images.length - 1
+                              ? "black"
+                              : "white"
+                          }`}
+                          className={` w-[24px] h-[24px]`}
                         />
                       }
                     />
@@ -165,8 +177,8 @@ export default function ImageGallery({ images }: any) {
               </>
             )}
           </ModalContent>
-        )}
-      </Modal>
+        )} */}
+      {/* </Modal> */}
     </section>
   );
 }

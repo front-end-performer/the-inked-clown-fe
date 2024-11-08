@@ -10,7 +10,7 @@ import {
   DropdownItem,
 } from "@nextui-org/react";
 
-import { setUserLocale } from "@/helpers/locale";
+import { setUserLocale } from "@/utils/locale";
 import { faLanguage } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {

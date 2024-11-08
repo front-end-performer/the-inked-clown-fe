@@ -4,6 +4,7 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true, //delete befoer deploying
   publicRuntimeConfig: {
     AWS_BUCKET_NAME: process.env.AWS_BUCKET_NAME,
   },
@@ -14,7 +15,13 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "process.env.AWS_BUCKET_NAME.s3.amazonaws.com",
+        hostname: "tdart-tatto.s3.amazonaws.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "the-inked-clown.s3.eu-central-1.amazonaws.com",
         port: "",
         pathname: "/**",
       },
@@ -22,7 +29,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "nextui-docs-v2.vercel.app",
         port: "",
-        pathname: "/**",
+        pathname: "/images/**",
       },
       {
         protocol: "https",
@@ -32,8 +39,6 @@ const nextConfig = {
       },
     ],
   },
-  // trailingSlash: true
 };
 
-// export default nextConfig;
 export default withNextIntl(nextConfig);
