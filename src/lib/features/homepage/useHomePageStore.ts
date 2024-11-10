@@ -1,12 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import type {
-  HomePageStore,
-  ArtistsResponse,
-  PhotosResponse,
-  HomePageActions,
-  HomePageState,
-} from "@/lib/features/types";
+import type { HomePageStore, ArtistsResponse, PhotosResponse } from "@/lib";
 import { fetchAllData } from "@/app/api/homePage";
 import {
   createNewArtistApi,
@@ -14,57 +8,24 @@ import {
   updateArtistApi,
 } from "@/app/api/artists/route";
 import { createNewPhotoApi, deletePhotoApi } from "@/app/api/photos/route";
+import { ArtistFormDataType } from "@/hooks";
 
 export const useHomePageStore = create(
   persist<HomePageStore>(
-    (set, get) => ({
+    (set) => ({
       artists: {} as ArtistsResponse,
       photos: {} as PhotosResponse,
       loadAllData: async () => {
-        // console.log("value", value);
-        const persistedData = get().artists;
-        console.log("persistedData", persistedData);
+        const allData = await fetchAllData();
+        const [a, p] = allData;
 
-        // console.log(JSON.parse(localStorage.getItem("home-page") || "").state.artists);
-
-        // Compare persisted data and new data
-        // if (JSON.stringify(persistedData) !== JSON.stringify(value)) {
-        //   console.log("call api");
-
-        // if (
-        //   JSON.stringify(JSON.parse(localStorage.getItem("home-page") || "").state.artists) !==
-        //   JSON.stringify(persistedData)
-        // ) {
-        //   console.log("not equal");
-          const allData = await fetchAllData();
-          const [a, p] = allData;
-
-          // console.log("ALL DATA FE", allData);
-
-          return set((state) => ({
-            ...state,
-            artists: { ...state.artists, ...a },
-            photos: { ...state.photos, ...p },
-          }));
-          // store?.loadAllData();
-        // } 
-        // else {
-        //   console.log(" equal");
-        // }
-
-        // const allData = await fetchAllData();
-        // const [a, p] = allData;
-
-        // // console.log("ALL DATA FE", allData);
-
-        // return set((state) => ({
-        //   ...state,
-        //   artists: { ...state.artists, ...a },
-        //   photos: { ...state.photos, ...p },
-        // }));
-        // }
+        return set((state) => ({
+          ...state,
+          artists: { ...state.artists, ...a },
+          photos: { ...state.photos, ...p },
+        }));
       },
-      createArtist: async (artistId: string, form: FormData) => {
+      createArtist: async (artistId: string, form: ArtistFormDataType) => {
         const newArtist: ArtistsResponse = await createNewArtistApi(
           artistId,
           form
@@ -77,7 +38,7 @@ export const useHomePageStore = create(
           };
         });
       },
-      updateArtist: async (artistId: string, form: FormData) => {
+      updateArtist: async (artistId: string, form: ArtistFormDataType) => {
         const updatedArtists = await updateArtistApi(artistId, form);
 
         return set((state) => {

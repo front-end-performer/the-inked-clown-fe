@@ -2,7 +2,7 @@
 
 import { SyntheticEvent, useEffect, useState } from "react";
 import { uploadFileHandler } from "@/app/api/upload";
-import type { ArtistsResponse, ArtistType } from "@/lib/features";
+import type { ArtistsResponse, ArtistType } from "@/lib";
 import {
   Card,
   CardBody,
@@ -34,10 +34,12 @@ export default function AddNewPhotoTab({
   submit,
   cancelHandler,
 }: Props) {
-  const [selectArtist, setSelectArtist] = useState<{
-    name: string;
-    value: string;
-  }[]>([]);
+  const [selectArtist, setSelectArtist] = useState<
+    {
+      name: string;
+      value: string;
+    }[]
+  >([]);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -82,20 +84,8 @@ export default function AddNewPhotoTab({
     });
   };
 
-  // const onPressHandler = (item: null): void => {
-  //   if (!item) {
-  //     setFormData({
-  //       title: "",
-  //       artistId: "",
-  //       description: "",
-  //       url: "",
-  //     });
-  //     return;
-  //   }
-  // };
-
   return (
-    <div className="w-1/3">
+    <div className="w-1/2 xl:w-1/3">
       <Card shadow="sm">
         <CardBody className="overflow-visible p-0">
           <ImageUploader onInput={handleImageChange} />

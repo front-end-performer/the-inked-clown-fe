@@ -1,25 +1,58 @@
-import mongoose from "mongoose";
+import { Schema, model, models } from "mongoose";
 
-const { Schema } = mongoose;
+export interface UserInterface {
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+  avatar: string;
+  isVerifiedEmail: boolean;
+  isBlocked: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
-mongoose.connect(process.env.MONGODB_URI || '');
-
-mongoose.Promise = global.Promise;
-
-const UserSchema = new Schema(
+const UserSchema = new Schema<UserInterface>(
   {
-    id: { type: Schema.ObjectId },
-    name: String,
-    email: String,
-    password: String,
-    role: String,
-    avatar: { type: String, default: "/logos/inkedclown-logo-header.png" },
-    isVerifiedEmail: { type: Boolean, default: false },
-    isBlocked: { type: Boolean, default: false },
+    email: {
+      type: String,
+      unique: true,
+      required: [true, "Email is required"],
+      match: [
+        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+        "Email is invalid",
+      ],
+    },
+    password: {
+      type: String,
+      required: [true, "Password is required"],
+      select: false,
+    },
+    name: {
+      type: String,
+      required: [true, "Fullname is required"],
+      minLength: [3, "fullname must be at least 3 characters"],
+      maxLength: [25, "fullname must be at most 25 characters"],
+    },
+    role: {
+      type: String,
+      default: "admin",
+    },
+    avatar: { type: String, default: "https://i.pravatar.cc/150?u=a042581f4e29026704d" },
+    isVerifiedEmail: {
+      type: Boolean,
+      default: false,
+    },
+    isBlocked: {
+      type: Boolean,
+      default: false,
+    },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
-const UserModel = mongoose.models.User || mongoose.model("User", UserSchema);
-
-export default UserModel;
+const User = models.User || model<UserInterface>("User", UserSchema);
+export default User;

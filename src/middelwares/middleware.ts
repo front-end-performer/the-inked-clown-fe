@@ -8,12 +8,11 @@ export default async function middleware(request: NextRequest) {
     defaultLocale,
     localePrefix: "as-needed",
   });
-  
+
   const response = handleI18nRouting(request);
 
-  response.headers.set('NEXT_LOCALE', defaultLocale)
+  response.headers.set("NEXT_LOCALE", defaultLocale);
 }
-
 
 export const config = {
   // Match only internationalized pathnames

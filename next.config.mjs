@@ -4,7 +4,6 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true, //delete befoer deploying
   publicRuntimeConfig: {
     AWS_BUCKET_NAME: process.env.AWS_BUCKET_NAME,
   },

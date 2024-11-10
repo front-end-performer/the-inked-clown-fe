@@ -1,4 +1,4 @@
-import type { ArtistType } from "@/lib/features";
+import type { ArtistType } from "@/lib";
 import { Image, Button } from "@nextui-org/react";
 import NextImage from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

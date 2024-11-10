@@ -2,7 +2,7 @@ import Video from "@/components/Video/video";
 import About from "@/components/About/about";
 import Artists from "@/components/Artists/artists";
 
-export default function HomePage() {
+export default async function RootPage() {
   return (
     <div
       id="home"

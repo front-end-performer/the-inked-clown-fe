@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import type { ArtistType } from "@/lib/features";
+import type { ArtistType } from "@/lib";
 import { uploadFileHandler } from "@/app/api/upload";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";

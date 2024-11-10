@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { type ArtistFormDataType, useArtistData } from "@/hooks";
-import type { ArtistsResponse, ArtistType } from "@/lib/features";
+import type { ArtistsResponse, ArtistType } from "@/lib";
 import {
   Card,
   CardBody,
@@ -14,10 +14,10 @@ import {
   Select,
   SelectItem,
 } from "@nextui-org/react";
-import ImageUploader from "../imageUploader";
 import Link from "next/link";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ImageUploader from "../imageUploader";
 
 type Props = {
   artists: ArtistsResponse;
@@ -49,7 +49,7 @@ export default function AllArtistsTab({
   } = useArtistData();
 
   return (
-    <div className="gap-2 grid grid-cols-4">
+    <div className="gap-2 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {artists.data.map((item: ArtistType) => (
         <Card shadow="sm" key={item._id} className="grow-0 relative">
           <CardBody className="overflow-visible p-0">

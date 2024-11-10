@@ -1,4 +1,4 @@
-import type { PhotosResponse, PhotoType } from "@/lib/features";
+import type { PhotosResponse, PhotoType } from "@/lib";
 import { Card, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 
 export default function AllPhotosTab({ photos, submitDelete }: Props) {
   return (
-    <div className="gap-2 grid grid-cols-4">
+    <div className="gap-2 grid grid-cols-2 lg:grid-cols-3 grid-cols-4">
       {photos.data.map((item: PhotoType) => (
         <Card shadow="sm" key={item._id} className="relative">
           <CardBody className="overflow-visible p-0">

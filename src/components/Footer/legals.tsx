@@ -1,19 +1,10 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Button, Link } from "@nextui-org/react";
-import { signIn, signOut } from "next-auth/react";
+import { Link } from "@nextui-org/react";
 
-export default function Legals({ session }: any) {
+export default function Legals() {
   const t = useTranslations("Legals");
-
-  const singInOut = () => {
-    if (!session) {
-      signIn();
-    } else {
-      signOut();
-    }
-  };
 
   return (
     <div className="h-72px flex justify-between items-center pt-16 pb-4 px-4 text-white">
@@ -28,14 +19,13 @@ export default function Legals({ session }: any) {
         >
           {t("terms")}
         </Link>
-        <Button
-          onClick={singInOut}
-          size="sm"
-          variant="light"
+
+        <Link
+          href="/login"
           className="text-xs font-light text-white data-[hover=true]:bg-[#ff0f3d] p-0"
         >
-          {!session ? t("login") : t("logout")}
-        </Button>
+          {t("login")}
+        </Link>
       </div>
     </div>
   );

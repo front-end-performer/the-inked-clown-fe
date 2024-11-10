@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import { defaultLocale } from "@/i18n/configs";
-import type { Locale } from "@/lib/features";
+import type { Locale } from "@/lib";
 
 // In this example the locale is read from a cookie. You could alternatively
 // also read it from a database, backend service, or any other source.

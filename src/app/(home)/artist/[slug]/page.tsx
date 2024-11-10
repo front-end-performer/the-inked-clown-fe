@@ -18,7 +18,7 @@ import {
 import { useEffect, useState } from "react";
 import { PhotoType, type ArtistType } from "@/lib/features/types";
 import ImageGallery from "@/components/ImageGallery/ImageGallery";
-import { useHomePageStore } from "@/lib/features";
+import { useHomePageStore } from "@/lib";
 import usePersistStore from "@/hooks/usePersistStore";
 
 export default function ArtistPage() {

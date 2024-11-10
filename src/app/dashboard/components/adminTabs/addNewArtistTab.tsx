@@ -28,7 +28,7 @@ export default function AddNewArtistTab({ submit, slectedKeyHandler }: any) {
   } = useArtistData();
 
   return (
-    <div className="w-1/3">
+    <div className="w-1/2 xl:w-1/3">
       <Card shadow="sm">
         <CardBody className="overflow-visible p-0">
           <ImageUploader onInput={handleImageChange} />

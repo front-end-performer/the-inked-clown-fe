@@ -35,5 +35,5 @@ export function useHash() {
     router.replace(newPath, { scroll: false });
   };
 
-  return { hash: isClient ? hash : null, removeHash };
+  return { hash: isClient ? hash : null, removeHash, path };
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import usePersistStore from "@/hooks/usePersistStore";
-import { ArtistType, useHomePageStore } from "@/lib/features";
+import { ArtistType, useHomePageStore } from "@/lib";
 import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import Artist from "./artist";
