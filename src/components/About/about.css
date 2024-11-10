@@ -6,7 +6,7 @@
   border-radius: 0% 100% 100% 100%;
   transform: rotate(45deg);
   clear: left;
-  animation: animate 3s infinite;
+  animation: animate 4s infinite;
   -webkit-transform: rotate(45deg);
   -webkit-animation: animate 3s infinite;
 }
@@ -52,12 +52,4 @@
   60% {
     transform: translateY(-15px);
   }
-}
-
-.box {
-  width: 200px;
-  height: 80px;
-  border-radius: 50px;
-  background: green;
-  cursor: pointer;
 }

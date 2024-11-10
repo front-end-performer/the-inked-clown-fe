@@ -16,15 +16,15 @@ export default function Artists() {
     }
   }, [store]);
 
-  if (store && Object.keys(store.artists).length === 0) {
+  if (!store || (store && Object.keys(store.artists).length === 0)) {
     return null;
   }
 
   return (
     <section id="artists" className="show-onscroll bg-transparent h-auto z-0">
       <div className="w-screen h-full bg-[url('/artists/artist_bg.jpg')] bg-cover bg-fixed bg-no-repeat z-10">
-        <div className="flex flex-col items-center justify-center relative max-w-7xl w-full h-full m-auto gap-16 py-28">
-          {store?.artists.data.map((artist: ArtistType) => {
+        <div className="flex flex-col items-center justify-center relative container w-full h-full mx-auto gap-16 py-28 px-4">
+          {store.artists.data.map((artist: ArtistType) => {
             return (
               <Artist
                 key={artist._id}

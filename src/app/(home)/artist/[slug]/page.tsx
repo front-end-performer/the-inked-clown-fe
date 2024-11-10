@@ -11,9 +11,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { PhotoType, type ArtistType } from "@/lib/features/types";
-import ImageGallery from "@/components/ImageGallery/ImageGallery";
-import { useHomePageStore } from "@/lib";
 import usePersistStore from "@/hooks/usePersistStore";
+import { useHomePageStore } from "@/lib";
+import ArtistImageGallery from "@/app/(home)/artist/components/ArtistImageGallery";
 
 export default function ArtistPage() {
   const store = usePersistStore(useHomePageStore, (state) => state);
@@ -75,20 +75,20 @@ export default function ArtistPage() {
     <main className="h-full bg-[url('/artists/artist_bg.jpg')] bg-cover bg-no-repeat">
       <Header title={currentArtist?.name || "no name"} />
 
-      <div className="max-w-7xl flex flex-col sm:flex-row justify-center m-auto py-16">
-        <div className="flex flex-1 justify-center sm:justify-end">
-          <Image
-            isZoomed
-            src={currentArtist?.url}
-            width={700}
-            radius="none"
-            className="w-full h-full min-h-[500px]"
-            alt={`The Inked Clown artist - ${currentArtist?.name}`}
-          />
-        </div>
-        <div className="flex flex-col flex-1">
+      <div className="container mx-auto grid grid-cols-[1fr_2fr] py-16 gap-4">
+        <Image
+          isZoomed
+          src={currentArtist?.url}
+          width={500}
+          height={350}
+          radius="none"
+          // className="w-full h-full"
+          alt={`The Inked Clown artist - ${currentArtist?.name}`}
+        />
+
+        <div>
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-x-4 pl-4 text-white">
+            <div className="flex items-center gap-x-4 text-white">
               <span className="font-light">{s("label")}</span>
 
               <Link href="#">
@@ -153,7 +153,7 @@ export default function ArtistPage() {
             </div>
           </div>
 
-          <div className="bg-white p-8 mt-16">
+          <div className="bg-white p-8 mt-4 text-black">
             <p className="text-xl mb-8 underline underline-offset-4 decoration-2 decoration-[#FF0F3D] text-[#FF0F3D]">
               {currentArtist?.gender.includes("female")
                 ? "Künstlerin"
@@ -163,12 +163,12 @@ export default function ArtistPage() {
             <h2 className="text-4xl mb-4 font-['abril_fatface_init']">
               {currentArtist?.name}
             </h2>
-            <p>{currentArtist?.description}</p>
+            <p className="text-normal">{currentArtist?.description}</p>
           </div>
         </div>
       </div>
 
-      <ImageGallery photos={artistPhotos} />
+      <ArtistImageGallery photos={artistPhotos} />
     </main>
   );
 }

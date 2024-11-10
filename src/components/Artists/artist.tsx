@@ -18,8 +18,8 @@ export default function Artist({ artist, socialMedia }: Props) {
         <div className="flex justify-center items-center shrink-0">
           <Image
             as={NextImage}
-            width={255}
-            height={255}
+            width={350}
+            height={350}
             radius="full"
             placeholder="blur"
             blurDataURL="data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48RXJyb3I+PENvZGU+SHR0cFZlcnNpb25Ob3RTdXBwb3J0ZWQ8L0NvZGU+PE1lc3NhZ2U+VGhlIEhUVFAgdmVyc2lvbiBzcGVjaWZpZWQgaXMgbm90IHN1cHBvcnRlZC48L01lc3NhZ2U+PFJlcXVlc3RJZD43MkQ4NUVCQkMxQjg3QUVGPC9SZXF1ZXN0SWQ+PEhvc3RJZD5FdWxFc05sTWVLYnBHNStSVlc1bWFFTWlENzJNQ1pCTW8zbytGWmJuVnBYVVJrV1RQZkxoZC9iSWpoa0pUWDJ3czBOSVJQQVcyNGY1U3BwdUNEVkQwK25qQVkvbDNsVDQ8L0hvc3RJZD48L0Vycm9yPg=="
@@ -27,6 +27,7 @@ export default function Artist({ artist, socialMedia }: Props) {
               img: ["origin-center hover:scale-105"],
               wrapper: ["w-full m-auto col-span-3"],
             }}
+            className="mx-auto max-w-[250px] max-h-[250px] lg:max-w-[350px] lg:max-h-[350px]"
             src={artist.url}
             alt={artist.slug}
           />
@@ -34,7 +35,7 @@ export default function Artist({ artist, socialMedia }: Props) {
 
         <div className="md:max-w-[92px] w-full">
           <h3 className="text-lg py-4 sm:py-0 underline underline-offset-4 text-[#FF0F3D] text-center md:text-right">
-            {artist.name.includes("Olesia") ? "Künstler/in" : "Künstler"}
+            {artist.gender === "female" ? "Künstlerin" : "Künstler"}
           </h3>
         </div>
 

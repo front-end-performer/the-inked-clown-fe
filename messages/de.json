@@ -222,6 +222,25 @@
     "label": "Sprache ändern",
     "locale": "{locale, select, de {🇩🇪 DE} en {🇺🇸 EN} other {Unbekannt}}"
   },
+  "Testimonials": {
+    "testimonials": [
+      {
+        "text": "Sehr empfehlenswert. Arbeitet sauber und ordentlich. Mein Wunschmotiv wurde mit ihm zusammen erarbeitet und ist dadurch einfach perfekt geworden. Ich komme wieder",
+        "author": "Waldemar M.",
+        "value": 5
+      },
+      {
+        "text": "Jederzeit wieder! Freundlich, super sauber, professionell - bin rundum zufrieden mit meinem kleinen, aber feinen Tattoo.",
+        "author": "Ursula S.",
+        "value": 5
+      },
+      {
+        "text": "Einfach Top von A bis Z ... super Beratung, sauber, freundlich und Mega Arbeit. Ich komme wieder 👍",
+        "author": "Christoph S.",
+        "value": 5
+      }
+    ]
+  },
   "SocialMedia": {
     "label": "Folgen Sie uns"
   },

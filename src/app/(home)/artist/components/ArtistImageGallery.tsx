@@ -19,7 +19,11 @@ import {
   faMagnifyingGlassPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function ImageGallery({ photos }: any) {
+type Props = {
+  photos: PhotoType[] | any;
+};
+
+export default function ArtistImageGallery({ photos }: Props) {
   const [isHovered, setIsHovered] = useState<string>("");
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [isImage, setIsImage] = useState<PhotoType | null>(null);
@@ -37,46 +41,47 @@ export default function ImageGallery({ photos }: any) {
   return (
     <section
       id="gallery"
-      className="show-onscroll grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative"
+      className="show-onscroll relative"
     >
-      {photos &&
-        photos.map((img: PhotoType) => {
-          const { _id, url, slug } = img;
+      <div className="container mx-auto flex flex-wrap">
+        {photos &&
+          photos.map((img: PhotoType) => {
+            const { _id, url, slug } = img;
 
-          return (
-            <div
-              key={_id}
-              className="cursor-pointer relative"
-              onClick={() => handleImageClick(_id)}
-              onMouseEnter={() => setIsHovered(_id)}
-              onMouseLeave={() => setIsHovered("")}
-            >
-              <Image
-                isZoomed
-                as={NextImage}
-                src={url}
-                alt={slug}
-                width={350}
-                height={350}
-                radius="none"
-                className="max-w-[350px] max-h-[350px]"
-              />
-
+            return (
               <div
-                className={`${
-                  isHovered !== _id ? "hidden" : ""
-                } absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-8 border-[#FF0F3D] p-6 hover:bg-[#FF0F3D]/50 z-10 cursor-pointer`}
-                onClick={onOpen}
+                key={_id}
+                className="cursor-pointer relative basis-1/4"
+                onClick={() => handleImageClick(_id)}
+                onMouseEnter={() => setIsHovered(_id)}
+                onMouseLeave={() => setIsHovered("")}
               >
-                <FontAwesomeIcon
-                  icon={faMagnifyingGlassPlus}
-                  size="xl"
-                  color="white"
+                <Image
+                  isZoomed
+                  as={NextImage}
+                  src={url}
+                  alt={slug}
+                  width={768}
+                  height={350}
+                  radius="none"
                 />
+
+                <div
+                  className={`${
+                    isHovered !== _id ? "hidden" : ""
+                  } absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-8 border-[#FF0F3D] p-6 hover:bg-[#FF0F3D]/50 z-10 cursor-pointer`}
+                  onClick={onOpen}
+                >
+                  <FontAwesomeIcon
+                    icon={faMagnifyingGlassPlus}
+                    size="xl"
+                    color="white"
+                  />
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+      </div>
 
       <Modal
         isOpen={isOpen}
