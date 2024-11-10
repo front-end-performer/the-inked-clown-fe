@@ -9,12 +9,6 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  useParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
 import { useEffect, useState } from "react";
 import { PhotoType, type ArtistType } from "@/lib/features/types";
 import ImageGallery from "@/components/ImageGallery/ImageGallery";
@@ -22,74 +16,74 @@ import { useHomePageStore } from "@/lib";
 import usePersistStore from "@/hooks/usePersistStore";
 
 export default function ArtistPage() {
-  // const searchparma = useSearchParams();
-  const { replace } = useRouter();
-  // const pathname = usePathname();
-
-  const { slug } = useParams<{ slug: string }>();
-  const [artist, setArtist] = useState<ArtistType | undefined>(undefined);
-  const [currentSlideId, setCurrentSlideId] = useState(0);
-  const [artistPhotos, setArtistPhotos] = useState<PhotoType[] | undefined>(
-    undefined
-  );
-  // const { allData, loadAllData } = useHomePageStore();
   const store = usePersistStore(useHomePageStore, (state) => state);
-
   const s = useTranslations("SocialMedia");
 
-  // useEffect(() => {
-  // console.log("Artists page effect", store);
-
-  //   if (store && Object.keys(store.artists).length === 0) {
-  //     store?.loadAllData();
-  //   }
-  //   // } else {
-  //   //   const artist = store?.artists.data.find(
-  //   //     (artist: ArtistType) => artist.slug === slug
-  //   //   );
-  //   //   console.log("effect", artist);
-
-  //   //   setArtist(artist);
-  //   // }
-  // }, [store]);
+  const [artists, setArtists] = useState<ArtistType[]>([]);
+  const [artistPhotos, setArtistPhotos] = useState<PhotoType[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    // const artist = store.artists.data.find(
-    //   (artist: ArtistType) => artist.slug === slug
-    // );
+    if (
+      store &&
+      Object.keys(store.artists).length > 0 &&
+      Object.keys(store.photos).length > 0
+    ) {
+      setArtists(store.artists.data);
 
-    if (store && Object.keys(store.artists).length > 0) {
-      const artist = store?.artists.data.find(
-        (artist: ArtistType) => artist.slug === slug
-      );
-      console.log("effect fiter artist by slug", artist);
-
-      setArtist(artist);
-      replace(`/artist/${artist?.slug}`);
-    }
-
-    if (store && Object.keys(store.photos).length > 0) {
-      const artistPhotos = store.photos.data.filter((photo) => {
-        return artist?._id === photo._artistId;
+      const filteredPhotos = store.photos.data.filter((photo) => {
+        return store.artists.data[currentIndex]._id === photo._artistId;
       });
 
-      setArtistPhotos(artistPhotos);
+      setArtistPhotos(filteredPhotos);
     }
-  }, [slug, store]);
+  }, [store]);
+
+  const showNextArtist = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % artists.length);
+
+    if (store && Object.keys(store.photos).length > 0) {
+      const filteredPhotos = store.photos.data.filter((photo) => {
+        return artists[currentIndex + 1]._id === photo._artistId;
+      });
+
+      setArtistPhotos(filteredPhotos);
+    }
+  };
+
+  // Function to show the previous artist
+  const showPreviousArtist = () => {
+    setCurrentIndex((prevIndex) => {
+      const newIndex = prevIndex - 1;
+
+      if (store && Object.keys(store.photos).length > 0) {
+        const filteredPhotos = store?.photos.data.filter((photo) => {
+          return artists[currentIndex - 1]._id === photo._artistId;
+        });
+
+        setArtistPhotos(filteredPhotos);
+      }
+
+      return newIndex < 0 ? artists.length - 1 : newIndex;
+    });
+  };
+
+  // Get the current artist
+  const currentArtist: ArtistType = artists[currentIndex];
 
   return (
     <main className="h-full bg-[url('/artists/artist_bg.jpg')] bg-cover bg-no-repeat">
-      <Header title={artist?.name || "no name"} />
+      <Header title={currentArtist?.name || "no name"} />
 
       <div className="max-w-7xl flex flex-col sm:flex-row justify-center m-auto py-16">
         <div className="flex flex-1 justify-center sm:justify-end">
           <Image
             isZoomed
-            src={artist?.url}
+            src={currentArtist?.url}
             width={700}
             radius="none"
             className="w-full h-full min-h-[500px]"
-            alt={`The Inked Clown artist - ${artist?.name}`}
+            alt={`The Inked Clown artist - ${currentArtist?.name}`}
           />
         </div>
         <div className="flex flex-col flex-1">
@@ -115,22 +109,66 @@ export default function ArtistPage() {
                 />
               </Link>
             </div>
+
+            <div className="flex gap-8 justify-end">
+              <Button
+                isIconOnly
+                variant="light"
+                color="secondary"
+                className="bg-transparent"
+                disabled={currentIndex === 0}
+                endContent={
+                  <FontAwesomeIcon
+                    icon={faChevronLeft}
+                    color="white"
+                    className={`${
+                      currentIndex === 0
+                        ? "text-neutral-400"
+                        : "text-white hover:text-[#FF0F3D]"
+                    } w-[24px] h-[24px]`}
+                    size="xl"
+                    onClick={showPreviousArtist}
+                  />
+                }
+              />
+
+              <Button
+                isIconOnly
+                variant="light"
+                disabled={currentIndex + 1 === artists.length}
+                endContent={
+                  <FontAwesomeIcon
+                    icon={faChevronRight}
+                    color="white"
+                    className={`${
+                      currentIndex + 1 === artists.length
+                        ? "text-neutral-400"
+                        : "text-white hover:text-[#FF0F3D]"
+                    } w-[24px] h-[24px]`}
+                    size="xl"
+                    onClick={showNextArtist}
+                  />
+                }
+              />
+            </div>
           </div>
 
           <div className="bg-white p-8 mt-16">
             <p className="text-xl mb-8 underline underline-offset-4 decoration-2 decoration-[#FF0F3D] text-[#FF0F3D]">
-              {artist?.gender.includes("female") ? "Künstlerin" : "Künstler"}
+              {currentArtist?.gender.includes("female")
+                ? "Künstlerin"
+                : "Künstler"}
             </p>
 
             <h2 className="text-4xl mb-4 font-['abril_fatface_init']">
-              {artist?.name}
+              {currentArtist?.name}
             </h2>
-            <p>{artist?.description}</p>
+            <p>{currentArtist?.description}</p>
           </div>
         </div>
       </div>
 
-      {/* {artistPhotos && <ImageGallery photos={artistPhotos} />} */}
+      <ImageGallery photos={artistPhotos} />
     </main>
   );
 }
