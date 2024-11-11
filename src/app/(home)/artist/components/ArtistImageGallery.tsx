@@ -51,7 +51,7 @@ export default function ArtistImageGallery({ photos }: Props) {
             return (
               <div
                 key={_id}
-                className="cursor-pointer relative basis-1/4"
+                className="cursor-pointer relative basis-full md:basis-1/2 lg:basis-1/4"
                 onClick={() => handleImageClick(_id)}
                 onMouseEnter={() => setIsHovered(_id)}
                 onMouseLeave={() => setIsHovered("")}

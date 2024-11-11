@@ -1,5 +1,8 @@
 "use client";
 
+import { useHomePageStore } from "@/providers/homePageStoreProvider";
+import type { Session } from "@/lib";
+import { SyntheticEvent, useEffect, useMemo, useState } from "react";
 import {
   Card,
   CardBody,
@@ -15,9 +18,6 @@ import {
   TableRow,
 } from "@nextui-org/react";
 import AllArtistsTab from "./allArtistsTab";
-import usePersistStore from "@/hooks/usePersistStore";
-import { Session, useHomePageStore } from "@/lib";
-import { SyntheticEvent, useEffect, useMemo, useRef, useState } from "react";
 import { ArtistFormDataType } from "@/hooks";
 import AddNewPhotoTab, { PhotoFormData } from "./addNewPhotoTab";
 import styles from "../../dashboard.module.css";
@@ -29,8 +29,9 @@ type Props = {
 };
 
 export default function AdminTabs({ sessionUser }: Props) {
-  const sessionUserId = useRef<string | undefined>(sessionUser?.id).current;
-  const store = usePersistStore(useHomePageStore, (state) => state);
+  const sessionUserId = sessionUser?._id;
+
+  const store = useHomePageStore((state) => state);
 
   const [selectedKeys, setSelectedKeys] = useState<Set<number>>(new Set([0]));
   const selectedValue = useMemo(
@@ -41,8 +42,8 @@ export default function AdminTabs({ sessionUser }: Props) {
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
-    if (store && Object.keys(store.artists).length === 0) {
-      store?.loadAllData();
+    if (store && !store.artists) {
+      store.loadAllData();
     }
   }, [store]);
 
@@ -90,6 +91,10 @@ export default function AdminTabs({ sessionUser }: Props) {
   };
 
   const submitDeleteArtist = async (artistId: string): Promise<void> => {
+    if (!store.artists) {
+      return;
+    }
+
     await store?.deleteArtist(artistId, store.artists).finally(() => {
       setSelectedKeys(new Set([1]));
     });
@@ -99,13 +104,13 @@ export default function AdminTabs({ sessionUser }: Props) {
     await store?.deletePhoto(photoId);
   };
 
-  if (!store) {
+  if (!store.artists || !store.photos) {
     return null;
   }
 
   return (
     <div className="flex gap-x-4 h-[calc(100vh-128px)] pb-4 text-white">
-      <section className={`${styles.bgGradient} basis-1/4 rounded-md`}>
+      <section className={`${styles.bgGradient} basis-[250px] rounded-md`}>
         <Listbox
           aria-label="Single selection example"
           variant="flat"
@@ -191,20 +196,20 @@ export default function AdminTabs({ sessionUser }: Props) {
           />
         )}
 
-        {Number(selectedValue) === 5 && (
+        {/* {Number(selectedValue) === 5 && (
           <AllPhotosTab
             photos={store.photos}
             submitDelete={submitDeletePhoto}
           />
-        )}
+        )} */}
 
-        {Number(selectedValue) === 6 && (
+        {/* {Number(selectedValue) === 6 && (
           <AddNewPhotoTab
             artists={store.artists}
             submit={submitAddNewPhoto}
             cancelHandler={(e: number) => setSelectedKeys(new Set([e]))}
           />
-        )}
+        )} */}
       </section>
     </div>
   );

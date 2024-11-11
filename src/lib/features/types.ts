@@ -1,4 +1,4 @@
-import type { PhotoFormData } from "@/components/adminTabs/addNewPhotoTab";
+import type { PhotoFormData } from "@/app/dashboard/components/adminTabs/addNewPhotoTab";
 import type { ArtistFormDataType } from "@/hooks";
 import { locales } from "@/i18n/configs";
 export type Locale = (typeof locales)[number];
@@ -8,7 +8,7 @@ type Status = "success" | "failure";
 
 export type Session = {
   user: {
-    id: string;
+    _id: string;
     email: string;
     role: string;
     name: string;
@@ -57,16 +57,22 @@ export type PhotosResponse = {
   status: Status;
 };
 
-export type HomePageStore = {
-  artists: ArtistsResponse;
-  photos: PhotosResponse;
+export type HomePageState = {
+  artists: ArtistsResponse | null;
+  photos: PhotosResponse | null;
+};
+
+export type HomPageActions = {
   loadAllData: () => Promise<void>;
+  setAllData: (data: [ArtistsResponse, PhotosResponse]) => Promise<void>;
   createArtist: (artistId: string, form: ArtistFormDataType) => Promise<any>;
   updateArtist: (artistId: string, form: ArtistFormDataType) => Promise<void>;
   deleteArtist: (id: string, artist: ArtistsResponse) => Promise<void>;
   createPhoto: (photosId: string, form: PhotoFormData) => Promise<any>;
   deletePhoto: (photosId: string) => Promise<void>;
 };
+
+export type HomePageStore = HomePageState & HomPageActions;
 
 export type HomePageStoreSet = (
   partial:

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import usePersistStore from "@/hooks/usePersistStore";
-import { ArtistType, HomePageStore, useHomePageStore } from "@/lib";
+import { useEffect, useState } from "react";
+import { useHomePageStore } from "@/providers/homePageStoreProvider";
+import type { ArtistType } from "@/lib";
 import { useTranslations } from "next-intl";
 import { useHash } from "@/hooks/useHash";
 import {
@@ -21,10 +21,7 @@ import TheInkedLogo from "../theInkedLogo";
 import Link from "next/link";
 
 export default function Navigation() {
-  const store = usePersistStore(
-    useHomePageStore,
-    (state: HomePageStore) => state
-  );
+  const store = useHomePageStore((state) => state);
   const t = useTranslations("Navigation");
 
   const [artists, setArtists] = useState<ArtistType[]>([]);
@@ -33,7 +30,7 @@ export default function Navigation() {
   const { hash, path } = useHash();
 
   useEffect(() => {
-    if (!store) {
+    if (!store.artists) {
       return;
     }
 
@@ -153,13 +150,16 @@ export default function Navigation() {
               {artists.map((artist) => {
                 return (
                   <DropdownItem
+                    as={Link}
                     key={artist._id}
                     textValue={artist.name}
                     description={artistKind(artist)}
                     className="hover:bg-[#FF0F3D]/75"
+                    href={`/artist/${artist.slug}`}
                     // startContent={icons.scale}
                   >
-                    <Link href={`/artist/${artist.slug}`}>{artist.name}</Link>
+                    {/* <Link href={`/artist/${artist.slug}`}>{artist.name}</Link> */}
+                    {artist.name}
                   </DropdownItem>
                 );
               })}

@@ -1,6 +1,12 @@
-import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
-import type { HomePageStore, ArtistsResponse, PhotosResponse } from "@/lib";
+import { createStore } from "zustand/vanilla";
+import type {
+  ArtistsResponse,
+  HomePageState,
+  HomePageStore,
+  PhotosResponse,
+} from "../types";
+import type { ArtistFormDataType } from "@/hooks";
+
 import { fetchAllData } from "@/app/api/homePage";
 import {
   createNewArtistApi,
@@ -8,97 +14,95 @@ import {
   updateArtistApi,
 } from "@/app/api/artists/route";
 import { createNewPhotoApi, deletePhotoApi } from "@/app/api/photos/route";
-import { ArtistFormDataType } from "@/hooks";
+import { PhotoFormData } from "@/app/dashboard/components/adminTabs/addNewPhotoTab";
 
-export const useHomePageStore = create(
-  persist<HomePageStore>(
-    (set) => ({
-      artists: {} as ArtistsResponse,
-      photos: {} as PhotosResponse,
-      loadAllData: async () => {
-        const allData = await fetchAllData();
-        const [a, p] = allData;
+export const defaultInitState: HomePageState = {
+  artists: null,
+  photos: null,
+};
 
-        return set((state) => ({
+export const createHomePageStore = (initState = defaultInitState) => {
+  return createStore<HomePageStore>()((set) => ({
+    ...initState,
+    loadAllData: async () => {
+      const allData = await fetchAllData();
+      const [a, p] = allData;
+
+      return set((state) => ({
+        ...state,
+        artists: { ...state.artists, ...a },
+        photos: { ...state.photos, ...p },
+      }));
+    },
+    setAllData: async (data: any) => {
+      const [a, p] = data;
+
+      return set((state) => ({
+        ...state,
+        artists: { ...state.artists, ...a },
+        photos: { ...state.photos, ...p },
+      }));
+    },
+    createArtist: async (artistId: string, form: ArtistFormDataType) => {
+      const newArtist: ArtistsResponse = await createNewArtistApi(
+        artistId,
+        form
+      );
+
+      return set((state) => {
+        return {
           ...state,
-          artists: { ...state.artists, ...a },
-          photos: { ...state.photos, ...p },
-        }));
-      },
-      createArtist: async (artistId: string, form: ArtistFormDataType) => {
-        const newArtist: ArtistsResponse = await createNewArtistApi(
-          artistId,
-          form
-        );
+          artists: { ...state.artists, ...newArtist },
+        };
+      });
+    },
+    updateArtist: async (artistId: string, form: ArtistFormDataType) => {
+      const updatedArtists = await updateArtistApi(artistId, form);
 
-        return set((state) => {
-          return {
-            ...state,
-            artists: { ...state.artists, ...newArtist },
-          };
-        });
-      },
-      updateArtist: async (artistId: string, form: ArtistFormDataType) => {
-        const updatedArtists = await updateArtistApi(artistId, form);
+      return set((state) => {
+        return {
+          ...state,
+          artists: { ...state.artists, ...updatedArtists },
+        };
+      });
+    },
+    deleteArtist: async (artisId: string) => {
+      const deletedArtist: ArtistsResponse = await deleteArtistApi(artisId);
 
-        return set((state) => {
-          return {
-            ...state,
-            artists: { ...state.artists, ...updatedArtists },
-          };
-        });
-      },
-      deleteArtist: async (artisId: string) => {
-        const deletedArtist: ArtistsResponse = await deleteArtistApi(artisId);
+      return set((state) => {
+        const filteredArtists = {
+          ...deletedArtist,
+          data: state.artists
+            ? [...state.artists.data.filter((artist) => artisId !== artist._id)]
+            : [],
+        };
 
-        return set((state) => {
-          const filteredArtists = {
-            ...deletedArtist,
-            data: [
-              ...state.artists.data.filter((artist) => artisId !== artist._id),
-            ],
-          };
+        return { ...state, artists: filteredArtists };
+      });
+    },
+    createPhoto: async (userId: string, form: PhotoFormData) => {
+      const newPhotos: PhotosResponse = await createNewPhotoApi(userId, form);
 
-          console.log("filteredArtists", filteredArtists);
+      return set((state) => {
+        return {
+          ...state,
+          photos: { ...state.photos, ...newPhotos },
+        };
+      });
+    },
+    deletePhoto: async (photoId: string) => {
+      const deletedPhoto: PhotosResponse = await deletePhotoApi(photoId);
 
-          return { ...state, artists: filteredArtists };
-        });
-      },
+      return set((state) => {
+        const filteredPhotos = {
+          ...deletedPhoto,
+          data: state.photos
+            ? [...state.photos.data.filter((photo) => photoId !== photo._id)]
+            : [],
+        };
 
-      createPhoto: async (userId: string, form: FormData) => {
-        const newPhotos: PhotosResponse = await createNewPhotoApi(userId, form);
-
-        return set((state) => {
-          return {
-            ...state,
-            photos: { ...state.photos, ...newPhotos },
-          };
-        });
-      },
-      deletePhoto: async (photoId: string) => {
-        const deletedPhoto: PhotosResponse = await deletePhotoApi(photoId);
-
-        return set((state) => {
-          console.log(state.photos.data);
-          const filteredPhotos = {
-            ...deletedPhoto,
-            data: [
-              ...state.photos.data.filter((photo) => photoId !== photo._id),
-            ],
-          };
-
-          return { ...state, photos: filteredPhotos };
-        });
-      },
-    }),
-    {
-      name: "home-page",
-      storage: createJSONStorage(() => localStorage),
-      version: 0,
-      merge: (persistedState, currentState) => ({
-        ...currentState,
-        ...(persistedState as HomePageStore),
-      }),
-    }
-  )
-);
+        return { ...state, photos: filteredPhotos };
+      });
+    },
+  }));
+};

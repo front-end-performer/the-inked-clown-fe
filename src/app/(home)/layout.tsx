@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 import { NextUIProvider } from "@nextui-org/react";
@@ -10,6 +10,8 @@ import "@/app/globals.css";
 
 import Navigation from "@/components/Header/navigation";
 import MainFooter from "@/components/Footer/mainFooter";
+import { HomePageStoreProvider } from "@/providers/homePageStoreProvider";
+import LoadingAnimation from "@/components/loading/loadingAnimation";
 const Map = dynamic(() => import("@/components/Map/map"));
 
 type Props = {
@@ -28,23 +30,27 @@ export default async function RootLayout({ children }: Readonly<Props>) {
 
   return (
     <html lang="de">
-      <NextAuthSessionProvider>
-        <body
-          className={`${abril_fatface_init.className}, ${inter_init.className}`}
-          suppressHydrationWarning={true}
-        >
-          <NextIntlClientProvider messages={messages}>
-            <NextUIProvider>
-              <Navigation />
+      <HomePageStoreProvider>
+        <NextAuthSessionProvider>
+          <body
+            className={`${abril_fatface_init.className}, ${inter_init.className}`}
+            suppressHydrationWarning={true}
+          >
+            <NextIntlClientProvider messages={messages}>
+              <NextUIProvider>
+                <Navigation />
 
-              <main>{children}</main>
+                <Suspense fallback={<LoadingAnimation />}>
+                  <main>{children}</main>
+                </Suspense>
 
-              <MainFooter />
-              <Map />
-            </NextUIProvider>
-          </NextIntlClientProvider>
-        </body>
-      </NextAuthSessionProvider>
+                <MainFooter />
+                <Map />
+              </NextUIProvider>
+            </NextIntlClientProvider>
+          </body>
+        </NextAuthSessionProvider>
+      </HomePageStoreProvider>
     </html>
   );
 }

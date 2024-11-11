@@ -1,0 +1,49 @@
+.Loader {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  left: 50%;
+  margin-left: -20px;
+  top: 50%;
+  margin-top: -20px;
+  z-index: 99999;
+}
+.Loader:before {
+  content: "";
+  height: 40px;
+  width: 40px;
+  border: 8px solid #ff103d;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+}
+
+.Loader:after {
+  content: "";
+  height: 40px;
+  width: 40px;
+  border: 8px solid #000;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+}
+
+.Loader:before {
+  animation: animate 2s infinite linear;
+}
+
+.Loader:after {
+  animation: animate2 2s infinite linear;
+}
+
+@keyframes animate {
+  100% {
+    transform: rotate(180deg) skew(360deg);
+  }
+}
+
+@keyframes animate2 {
+  100% {
+    transform: rotate(-180deg) skew(-360deg);
+  }
+}

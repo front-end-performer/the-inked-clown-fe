@@ -7,6 +7,7 @@ export default function TheInkedLogo() {
       className="w-16 h-18"
       width={64}
       height={64}
+      priority
       alt="The Inked Clown Logo"
     />
   );

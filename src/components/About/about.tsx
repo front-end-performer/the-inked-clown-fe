@@ -16,20 +16,19 @@ export default function About() {
       id="about"
       className="show-onscroll bg-white w-full h-full md:min-h-[800px] relative"
     >
-      <img
-        src="/about/arrow.png"
-        width={40}
-        height={136}
-        alt="the inked clown - arrow"
-        style={{
-          position: "absolute",
-          margin: "0 auto",
-          left: 0,
-          right: 0,
-          top: '-40px'
-        }}
-        className="arrow animated animatedDelay z-20"
-      />
+      <div className="hidden md:flex justify-center absolute w-full -top-20 h-[136px]">
+        <Image
+          src="/about/arrow.png"
+          width={40}
+          height={136}
+          alt="the inked clown - arrow"
+          style={{
+            margin: "0 auto",
+          }}
+          className="arrow animated animatedDelay z-20"
+        />
+      </div>
+
       <div className="container mx-auto relative py-28">
         <div className="grid grid-cols-1 md:grid-cols-2 w-full">
           <div className="hidden md:flex justify-end text-black relative">

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import usePersistStore from "@/hooks/usePersistStore";
-import { useHomePageStore, type PhotoType } from "@/lib";
+import { useHomePageStore } from "@/providers/homePageStoreProvider";
+import type { PhotoType } from "@/lib";
 import {
   Modal,
   ModalContent,
@@ -21,7 +21,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function HomeImageGallery() {
-  const store = usePersistStore(useHomePageStore, (state) => state);
+  const store = useHomePageStore((state) => state);
 
   const [isHovered, setIsHovered] = useState<string>("");
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -31,7 +31,7 @@ export default function HomeImageGallery() {
   );
 
   useEffect(() => {
-    if (store && Object.keys(store.photos).length > 0) {
+    if (store.photos && Object.keys(store.photos).length > 0) {
       setPhotos(store.photos.data);
     }
   }, [store]);

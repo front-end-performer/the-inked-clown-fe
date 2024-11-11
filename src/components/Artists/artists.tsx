@@ -1,30 +1,32 @@
 "use client";
 
-import usePersistStore from "@/hooks/usePersistStore";
-import { ArtistType, useHomePageStore } from "@/lib";
 import { useEffect } from "react";
 import { useTranslations } from "next-intl";
+import { ArtistsResponse, PhotosResponse, type ArtistType } from "@/lib";
+import { useHomePageStore } from "@/providers/homePageStoreProvider";
 import Artist from "./artist";
 
-export default function Artists() {
-  const store = usePersistStore(useHomePageStore, (state) => state);
+type Props = {
+  allData: [ArtistsResponse, PhotosResponse];
+};
+
+export default function Artists({ allData }: Props) {
   const social = useTranslations("SocialMedia");
+  const { setAllData } = useHomePageStore((state) => state);
 
   useEffect(() => {
-    if (store && Object.keys(store.artists).length === 0) {
-      store?.loadAllData();
-    }
-  }, [store]);
+    setAllData(allData);
+  }, [allData, setAllData]);
 
-  if (!store || (store && Object.keys(store.artists).length === 0)) {
-    return null;
+  if (!allData) {
+    return;
   }
 
   return (
     <section id="artists" className="show-onscroll bg-transparent h-auto z-0">
       <div className="w-screen h-full bg-[url('/artists/artist_bg.jpg')] bg-cover bg-fixed bg-no-repeat z-10">
         <div className="flex flex-col items-center justify-center relative container w-full h-full mx-auto gap-16 py-28 px-4">
-          {store.artists.data.map((artist: ArtistType) => {
+          {allData[0].data.map((artist: ArtistType) => {
             return (
               <Artist
                 key={artist._id}

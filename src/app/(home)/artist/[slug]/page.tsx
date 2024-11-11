@@ -11,12 +11,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { PhotoType, type ArtistType } from "@/lib/features/types";
-import usePersistStore from "@/hooks/usePersistStore";
-import { useHomePageStore } from "@/lib";
 import ArtistImageGallery from "@/app/(home)/artist/components/ArtistImageGallery";
+import { useHomePageStore } from "@/providers/homePageStoreProvider";
+import LoadingAnimation from "@/components/loading/loadingAnimation";
 
 export default function ArtistPage() {
-  const store = usePersistStore(useHomePageStore, (state) => state);
+  const store = useHomePageStore((state) => state);
   const s = useTranslations("SocialMedia");
 
   const [artists, setArtists] = useState<ArtistType[]>([]);
@@ -25,26 +25,27 @@ export default function ArtistPage() {
 
   useEffect(() => {
     if (
-      store &&
+      store.photos &&
+      store.artists &&
       Object.keys(store.artists).length > 0 &&
       Object.keys(store.photos).length > 0
     ) {
       setArtists(store.artists.data);
 
       const filteredPhotos = store.photos.data.filter((photo) => {
-        return store.artists.data[currentIndex]._id === photo._artistId;
+        return store.artists?.data[currentIndex]._id === photo._artistId;
       });
 
       setArtistPhotos(filteredPhotos);
     }
-  }, [store]);
+  }, [store, currentIndex]);
 
   const showNextArtist = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % artists.length);
 
-    if (store && Object.keys(store.photos).length > 0) {
+    if (store.photos) {
       const filteredPhotos = store.photos.data.filter((photo) => {
-        return artists[currentIndex + 1]._id === photo._artistId;
+        return store.artists?.data[currentIndex + 1]._id === photo._artistId;
       });
 
       setArtistPhotos(filteredPhotos);
@@ -56,11 +57,10 @@ export default function ArtistPage() {
     setCurrentIndex((prevIndex) => {
       const newIndex = prevIndex - 1;
 
-      if (store && Object.keys(store.photos).length > 0) {
-        const filteredPhotos = store?.photos.data.filter((photo) => {
-          return artists[currentIndex - 1]._id === photo._artistId;
+      if (store.photos) {
+        const filteredPhotos = store.photos.data.filter((photo) => {
+          return store.artists?.data[currentIndex - 1]._id === photo._artistId;
         });
-
         setArtistPhotos(filteredPhotos);
       }
 
@@ -71,20 +71,25 @@ export default function ArtistPage() {
   // Get the current artist
   const currentArtist: ArtistType = artists[currentIndex];
 
+  if (artists.length === 0) {
+    return <LoadingAnimation />;
+  }
+
   return (
     <main className="h-full bg-[url('/artists/artist_bg.jpg')] bg-cover bg-no-repeat">
       <Header title={currentArtist?.name || "no name"} />
 
-      <div className="container mx-auto grid grid-cols-[1fr_2fr] py-16 gap-4">
-        <Image
-          isZoomed
-          src={currentArtist?.url}
-          width={500}
-          height={350}
-          radius="none"
-          // className="w-full h-full"
-          alt={`The Inked Clown artist - ${currentArtist?.name}`}
-        />
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-[1fr_2fr] py-0 md:py-16 gap-4 text-center lg:text-left">
+        <div className="flex justify-center">
+          <Image
+            isZoomed
+            src={currentArtist?.url}
+            width={500}
+            height={350}
+            radius="none"
+            alt={`The Inked Clown artist - ${currentArtist?.name}`}
+          />
+        </div>
 
         <div>
           <div className="flex items-center justify-between">

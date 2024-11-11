@@ -46,7 +46,7 @@ const createUser = async (body: any) => {
     return {
       isError: false,
       data: {
-        id: result?._id?.toString(),
+        _id: result?._id?.toString(),
         name: result.name,
         role: result.role,
         email: result.email,
@@ -79,7 +79,7 @@ const getCurrentUser = async (id: any) => {
     return {
       isError: false,
       data: {
-        id: result?._id?.toString(),
+        _id: result?._id?.toString(),
         name: result.name,
         role: result.role,
         email: result.email,
@@ -101,7 +101,7 @@ const getAllUsers = async () => {
   try {
     const results = await UserModel.find({}).lean().exec();
     const data = results?.map((user: any) => ({
-      id: user?._id?.toString(),
+      _id: user?._id?.toString(),
       name: user.name,
       email: user.email,
       role: user.role,

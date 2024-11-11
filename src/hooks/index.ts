@@ -49,7 +49,7 @@ export const useArtistData = () => {
     if (formData.name === "") return false;
 
     return textValidate.safeParse(formData.name).success ? false : true;
-  }, [formData.name]);
+  }, [formData.name, textValidate]);
 
   const handleInput = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>

@@ -25,7 +25,7 @@ export default function Header({ session }: Props) {
 
       <NavbarContent as="div" justify="end">
         <Button
-          onClick={() => signOut()}
+          onClick={() => signOut({ callbackUrl: '/' })}
           size="sm"
           variant="light"
           className="text-xs font-light text-white data-[hover=true]:bg-[#ff0f3d] p-0"

@@ -32,7 +32,6 @@ export default function ImageUploader({ itemUrl = "", onInput }: Props) {
     }
 
     const pickedFile = event.target.files[0];
-    console.log(pickedFile);
 
     if (pickedFile.size > 1000000) {
       alert("Image Size should not be greater than 1mb");

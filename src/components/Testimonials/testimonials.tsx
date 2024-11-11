@@ -37,7 +37,7 @@ export default function Testimonials() {
     };
 
     constructRating(5);
-  }, []);
+  }, [ratingArray]);
 
   return (
     <section

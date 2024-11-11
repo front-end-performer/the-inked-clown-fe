@@ -8,6 +8,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/authOptions";
 import { type Session } from "@/lib";
 import Header from "./components/header";
+import { HomePageStoreProvider } from "@/providers/homePageStoreProvider";
 
 type Props = {
   children: ReactNode;
@@ -26,7 +27,9 @@ export default async function DashBoardLayout({ children }: Readonly<Props>) {
           <NextUIProvider>
             <Header session={session} />
 
-            <main>{children}</main>
+            <HomePageStoreProvider>
+              <main>{children}</main>
+            </HomePageStoreProvider>
           </NextUIProvider>
         </body>
       </NextAuthSessionProvider>
