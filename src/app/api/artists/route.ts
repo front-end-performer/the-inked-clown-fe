@@ -4,7 +4,7 @@ export async function updateArtistApi(id: string, form: ArtistFormDataType) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_NODE_URL}/artist/update?id=${id}`,
     {
-      method: "POST",
+      method: "PUT",
       body: JSON.stringify(form),
       headers: {
         "Content-Type": "application/json",

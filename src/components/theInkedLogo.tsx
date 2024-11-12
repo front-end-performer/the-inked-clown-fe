@@ -6,8 +6,8 @@ export default function TheInkedLogo() {
     <Image
       src={img}
       className="w-16 h-18"
-      width={16}
-      height={18}
+      width={64}
+      height={64}
       priority
       alt="The Inked Clown Logo"
     />
