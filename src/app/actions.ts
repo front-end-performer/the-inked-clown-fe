@@ -26,6 +26,6 @@ export async function sendMessage(prevState: any, formData: FormData) {
     });
 
   return {
-    message: "Please enter a valid email",
+    message: "Please enter a valid email.",
   };
 }
