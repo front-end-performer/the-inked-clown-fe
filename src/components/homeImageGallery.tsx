@@ -80,10 +80,10 @@ export default function HomeImageGallery() {
                   isZoomed
                   as={NextImage}
                   src={url}
-                  alt={slug}
                   width={768}
                   height={350}
                   radius="none"
+                  alt={slug}
                 />
 
                 <div

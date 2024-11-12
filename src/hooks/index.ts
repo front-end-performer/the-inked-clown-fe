@@ -21,6 +21,8 @@ export const useAuthUser = (url = "/") => {
   const isAuthenticated = status === "authenticated";
   const isUnAuthenticated = status === "unauthenticated";
 
+  console.log(session, isLoading, isAuthenticated, isUnAuthenticated);
+  
   return { session, isLoading, isAuthenticated, isUnAuthenticated };
 };
 

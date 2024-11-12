@@ -28,7 +28,7 @@ export default function Testimonials() {
 
   useEffect(() => {
     const constructRating = (currentRating: number) => {
-      const updatedArray = ratingArray.map(
+      const updatedArray = new Array(5).fill(<></>).map(
         (_: JSX.Element, idx: number) => {
           return <Star isFilled={idx < currentRating} key={idx} />;
         }
@@ -37,7 +37,7 @@ export default function Testimonials() {
     };
 
     constructRating(5);
-  }, [ratingArray]);
+  }, []);
 
   return (
     <section

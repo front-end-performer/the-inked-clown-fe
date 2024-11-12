@@ -8,17 +8,23 @@ export function middleware(request: NextRequest) {
   const isProtectedRoute = protectedRoutes.some((route) =>
     url.pathname.startsWith(route)
   );
+  
+  if (url.pathname === "/" && request.cookies.has("next-auth.session-token")) {
+    url.pathname = "/dashboard";
+    return NextResponse.redirect(url);
+  }
 
   // If on a protected route and not authenticated, redirect to login
   if (isProtectedRoute && !request.cookies.has("next-auth.session-token")) {
-    url.pathname = "/login";
+    url.pathname = "/";
     return NextResponse.redirect(url);
   }
+  
 
   // Continue to the requested route
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/dashboard"], // Trigger middleware only for these paths
+  matcher: ["/dashboard", "/"], // Trigger middleware only for these paths
 };
