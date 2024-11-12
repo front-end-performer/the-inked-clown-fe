@@ -3,13 +3,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  publicRuntimeConfig: {
-    AWS_BUCKET_NAME: process.env.AWS_BUCKET_NAME,
-  },
-  serverRuntimeConfig: {
-    AWS_BUCKET_NAME: process.env.AWS_BUCKET_NAME,
-  },
+const nextConfig = {  
   images: {
     remotePatterns: [
       {
@@ -32,7 +26,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "theinkedclown-dev-954091e38b4e.herokuapp.com",
+        hostname: "the-inked-clown-be-7f014e109e88.herokuapp.com",
         port: "",
         pathname: "/**",
       },

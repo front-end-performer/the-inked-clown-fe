@@ -15,7 +15,7 @@ import {
 } from "@nextui-org/react";
 import ImageUploader from "../imageUploader";
 
-export type PhotoFormData = {
+export type PhotoFormDataType = {
   title: string;
   description: string;
   artistId: string;
@@ -24,9 +24,8 @@ export type PhotoFormData = {
 
 type Props = {
   artists: ArtistsResponse;
-  submit: (form: PhotoFormData, e: SyntheticEvent) => void;
+  submit: (form: PhotoFormDataType, e: SyntheticEvent) => void;
   cancelHandler: (value: number) => void;
-  // slectedKeyHandler: Set<number> | null | undefined;
 };
 
 export default function AddNewPhotoTab({

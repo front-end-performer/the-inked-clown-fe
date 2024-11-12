@@ -14,7 +14,7 @@ import {
   updateArtistApi,
 } from "@/app/api/artists/route";
 import { createNewPhotoApi, deletePhotoApi } from "@/app/api/photos/route";
-import { PhotoFormData } from "@/app/dashboard/components/adminTabs/addNewPhotoTab";
+import type { PhotoFormDataType } from "@/app/dashboard/components/adminTabs/addNewPhotoTab";
 
 export const defaultInitState: HomePageState = {
   artists: null,
@@ -80,7 +80,7 @@ export const createHomePageStore = (initState = defaultInitState) => {
         return { ...state, artists: filteredArtists };
       });
     },
-    createPhoto: async (userId: string, form: PhotoFormData) => {
+    createPhoto: async (userId: string, form: PhotoFormDataType) => {
       const newPhotos: PhotosResponse = await createNewPhotoApi(userId, form);
 
       return set((state) => {

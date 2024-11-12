@@ -1,9 +1,11 @@
-export async function updateArtistApi(id: string, formData: any) {
+import type { ArtistFormDataType } from "@/hooks";
+
+export async function updateArtistApi(id: string, form: ArtistFormDataType) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_NODE_URL}/artist/update?id=${id}`,
     {
       method: "POST",
-      body: JSON.stringify(formData),
+      body: JSON.stringify(form),
       headers: {
         "Content-Type": "application/json",
       },
@@ -17,12 +19,12 @@ export async function updateArtistApi(id: string, formData: any) {
   return response;
 }
 
-export async function createNewArtistApi(userId: string, formData: any) {
+export async function createNewArtistApi(userId: string, form: ArtistFormDataType) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_NODE_URL}/artist/create?userId=${userId}`,
     {
       method: "POST",
-      body: JSON.stringify(formData),
+      body: JSON.stringify(form),
       headers: {
         "Content-Type": "application/json",
       },

@@ -19,7 +19,7 @@ import {
 } from "@nextui-org/react";
 import AllArtistsTab from "./allArtistsTab";
 import { ArtistFormDataType } from "@/hooks";
-import AddNewPhotoTab, { PhotoFormData } from "./addNewPhotoTab";
+import AddNewPhotoTab, {type  PhotoFormDataType } from "./addNewPhotoTab";
 import styles from "../../dashboard.module.css";
 import AddNewArtistTab from "./addNewArtistTab";
 import AllPhotosTab from "./allPhotosTab";
@@ -75,7 +75,7 @@ export default function AdminTabs({ sessionUser }: Props) {
   };
 
   const submitAddNewPhoto = async (
-    photoFormData: PhotoFormData,
+    formData: PhotoFormDataType,
     e: SyntheticEvent
   ): Promise<void> => {
     // We don't want the page to refresh
@@ -85,7 +85,7 @@ export default function AdminTabs({ sessionUser }: Props) {
       return;
     }
 
-    await store?.createPhoto(sessionUserId, photoFormData).finally(() => {
+    await store?.createPhoto(sessionUserId, formData).finally(() => {
       setSelectedKeys(new Set([5]));
     });
   };
@@ -196,20 +196,20 @@ export default function AdminTabs({ sessionUser }: Props) {
           />
         )}
 
-        {/* {Number(selectedValue) === 5 && (
+        {Number(selectedValue) === 5 && (
           <AllPhotosTab
             photos={store.photos}
             submitDelete={submitDeletePhoto}
           />
-        )} */}
+        )}
 
-        {/* {Number(selectedValue) === 6 && (
+        {Number(selectedValue) === 6 && (
           <AddNewPhotoTab
             artists={store.artists}
             submit={submitAddNewPhoto}
             cancelHandler={(e: number) => setSelectedKeys(new Set([e]))}
           />
-        )} */}
+        )}
       </section>
     </div>
   );

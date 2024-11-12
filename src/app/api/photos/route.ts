@@ -1,9 +1,11 @@
-export async function createNewPhotoApi(userId: string, formData: any) {
+import type { PhotoFormDataType } from "@/app/dashboard/components/adminTabs/addNewPhotoTab";
+
+export async function createNewPhotoApi(userId: string, form: PhotoFormDataType) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_NODE_URL}/photo/create?userId=${userId}`,
     {
       method: "POST",
-      body: JSON.stringify(formData),
+      body: JSON.stringify(form),
       headers: {
         "Content-Type": "application/json",
       },

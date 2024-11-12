@@ -1,4 +1,4 @@
-import type { PhotoFormData } from "@/app/dashboard/components/adminTabs/addNewPhotoTab";
+import type { PhotoFormDataType } from "@/app/dashboard/components/adminTabs/addNewPhotoTab";
 import type { ArtistFormDataType } from "@/hooks";
 import { locales } from "@/i18n/configs";
 export type Locale = (typeof locales)[number];
@@ -68,7 +68,7 @@ export type HomPageActions = {
   createArtist: (artistId: string, form: ArtistFormDataType) => Promise<any>;
   updateArtist: (artistId: string, form: ArtistFormDataType) => Promise<void>;
   deleteArtist: (id: string, artist: ArtistsResponse) => Promise<void>;
-  createPhoto: (photosId: string, form: PhotoFormData) => Promise<any>;
+  createPhoto: (photosId: string, form: PhotoFormDataType) => Promise<any>;
   deletePhoto: (photosId: string) => Promise<void>;
 };
 
