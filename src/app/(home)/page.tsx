@@ -18,7 +18,7 @@ export default async function RootPage() {
     >
       <Video />
       <About />
-      {allData && <ArtistsSection allData={allData} />}
+      <ArtistsSection allData={allData} />
       <HomeImageGallery />
       <Testimonials />
     </div>
