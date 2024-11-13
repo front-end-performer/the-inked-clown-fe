@@ -7,7 +7,7 @@ import { useHomePageStore } from "@/providers/homePageStoreProvider";
 import Artist from "./artist";
 
 type Props = {
-  allData: [ArtistsResponse, PhotosResponse] | undefined;
+  allData: [ArtistsResponse, PhotosResponse];
 };
 
 export default function ArtistsSection({ allData }: Props) {
@@ -15,15 +15,15 @@ export default function ArtistsSection({ allData }: Props) {
   const { setAllData } = useHomePageStore((state) => state);
 
   useEffect(() => {
-    if (allData === undefined) {
+    if (!allData) {
       return;
     }
 
     setAllData(allData);
   }, [allData, setAllData]);
 
-  if (allData === undefined) {
-    return;
+  if (!allData) {
+    return null;
   }
 
   return (

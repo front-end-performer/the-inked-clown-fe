@@ -1,7 +1,9 @@
 import UserService from "@/services/user";
+import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET() {
     const result = await UserService.getAllUsers();
-    if(result.isError) return Response.json(result.message, {status: 500});
-    return Response.json(result.data)
+    if(result.isError) return NextResponse.json(result.message, {status: 500});
+    
+    return NextResponse.json(result.data)
 }
