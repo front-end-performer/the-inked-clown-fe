@@ -15,6 +15,7 @@
 
 # production
 /build
+/tsconfig.tsbuildinfo
 
 /src/de.json
 /src/en.json
