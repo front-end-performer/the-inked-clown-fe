@@ -3,6 +3,8 @@ import dynamic from "next/dynamic";
 import Video from "@/components/Video/video";
 import About from "@/components/About/about";
 import ArtistsSection from "@/components/Artists/artists";
+import { Suspense } from "react";
+import LoadingAnimation from "@/components/loading/loadingAnimation";
 const HomeImageGallery = dynamic(() => import("@/components/homeImageGallery"));
 const Testimonials = dynamic(
   () => import("@/components/Testimonials/testimonials")
@@ -18,7 +20,9 @@ export default async function RootPage() {
     >
       <Video />
       <About />
-      <ArtistsSection allData={allData} />
+      <Suspense fallback={<LoadingAnimation />}>
+        <ArtistsSection allData={allData} />
+      </Suspense>
       <HomeImageGallery />
       <Testimonials />
     </div>
