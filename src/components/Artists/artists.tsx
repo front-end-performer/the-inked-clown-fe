@@ -10,7 +10,7 @@ type Props = {
   allData: [ArtistsResponse, PhotosResponse];
 };
 
-export default function Artists({ allData }: Props) {
+export default function ArtistsSection({ allData }: Props) {
   const social = useTranslations("SocialMedia");
   const { setAllData } = useHomePageStore((state) => state);
 

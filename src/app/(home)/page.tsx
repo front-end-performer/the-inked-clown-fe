@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import Video from "@/components/Video/video";
 import About from "@/components/About/about";
-import Artists from "@/components/Artists/artists";
+import ArtistsSection from "@/components/Artists/artists";
 import { fetchAllData } from "../api/homePage";
 const HomeImageGallery = dynamic(() => import("@/components/homeImageGallery"));
 const Testimonials = dynamic(
@@ -18,7 +18,7 @@ export default async function RootPage() {
     >
       <Video />
       <About />
-      <Artists allData={allData} />
+      {allData && <ArtistsSection allData={allData} />}
       <HomeImageGallery />
       <Testimonials />
     </div>
