@@ -12,8 +12,8 @@ import {
   createNewArtistApi,
   deleteArtistApi,
   updateArtistApi,
-} from "@/app/api/artists/route";
-import { createNewPhotoApi, deletePhotoApi } from "@/app/api/photos/route";
+} from "@/app/api/artists";
+import { createNewPhotoApi, deletePhotoApi } from "@/app/api/photos";
 import type { PhotoFormDataType } from "@/app/dashboard/components/adminTabs/addNewPhotoTab";
 
 export const defaultInitState: HomePageState = {
